@@ -46,15 +46,50 @@ app.controller('CompanyMapCtrl', function($scope, $location) {
   //$scope.bHeight = 20; // boothHeight
   
   $scope.roomTitle = "Industry Day 2014 Layout";  
-  //$scope.roomOutline = "m7.112296,825.497009l-0.257112,-822.069417l1084.832926,-1.713796l0,824.335887l-205.655579,-1.713806l15.424194,-34.275879l-130.248474,0l17.137939,35.989685l-781.233896,-0.552673z M452.69928,1019.155945l-221.336807,-1.161072l0,406.169678l675.235672,0l0,-411.311096l-339.331665,-1.713806l34.27594,46.272461l-186.803772,-1.713745l37.960632,-36.542419z";
-  $scope.roomOutline = "M395 1070 l-193-1 0 354 589 0 0-359 -296-1 30 40 -163-1 33-32 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0z M12 904l0-717 946-1 0 719 -179-1 13-30 -114 0 15 31 -6810 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0z";
 
-  
+// outline for grill room i think
+//  $scope.roomOutline = "M395 1070 l-193-1 0 354 589 0 0-359 -296-1 30 40 -163-1 33-32 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0z M12 904l0-717 946-1 0 719 -179-1 13-30 -114 0 15 31 -6810 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0z";
 
-$scope.startX = -10;
+$scope.roomOutline = "M 200,10 h1040 v900 h-855 l -72,-35 l -48,100 l -135,-75 l 65, -105 v-785 z M 250,1200 h865 v595 h-140 v25 h-120 v-25 h-605 z";
+
+/*path class="roomOutline"  
+        d="
+        M 200,10
+        l 1040,0
+        l 0,900
+        l -855,0
+        l -72, -35
+        l -48, 100
+        l -135, -75
+        l 65, -105
+        l 0,-785
+        z"
+  */
+
+  /*
+  M 250,1200
+        l 865,0
+        l 0,595
+        l -140,0
+        l 0,25
+        l-120,0
+        l 0,-25
+        l -605, 0
+        z
+        */
+
+// these are for techexpo hilton orrington
+  $scope.startX = 80;  
+  $scope.startY = -200;
+  $scope.mapWidth = 1250;
+  $scope.mapHeight = 2100;
+
+// tese are for iday
+ /* $scope.startX = -10;
   $scope.startY = -800;
   $scope.mapWidth = 1100;
   $scope.mapHeight = 2435;
+  */
  
  // values specific to THIS floorplan svg image
 // i have code to calculate the size of the canvase as well
