@@ -17,8 +17,10 @@ app.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, AttendeesSer
   //$scope.floorplan = CareerFairService.getBooths(); //getBoothLayout();
   
   // --- use data from searchProperties.js --- //
-  $scope.majors = majors_list;
-  $scope.positions = positions_list;
+ // $scope.majors = majors_list;
+ // $scope.positions = positions_list;
+ $scope.majors = CareerFairService.getMajors();
+ $scope.positions = CareerFairService.getPositions();
 
   $scope.allCompanies = CareerFairService.getCompanies();
 

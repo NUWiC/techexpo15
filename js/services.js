@@ -18,6 +18,8 @@ app.service('CareerFairService', function($q) {
     linkedinData: company_list_linkedinData,
     csoData: company_list_csoData,
     booths: booth_info,
+    majors: majors_list,
+    positions: positions_list,
     
     // Booth information includes:
     // id - int - the unique booth number used to identify this booth and link it to a company
@@ -82,6 +84,8 @@ app.service('CareerFairService', function($q) {
     },
     // getBoothLayout
     getBooths: function() { return this.booths; },
+    getMajors: function() { return this.majors; },
+    getPositions: function() { return this.positions; },
     
     getBooth: function(boothNumber) {
       var dfd = $q.defer();

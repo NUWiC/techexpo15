@@ -62,3 +62,40 @@ var company_list = [
 {"booth":61,"name":"Samtec","id":"samtec","linkedinID":"samtec-inc","empId":1926,"All":0,"AM":0,"BME":0,"ChE":0,"CmpE":0,"CS":0,"Econ":0,"EE":1,"EnvE":0,"IE":1,"MaDE":0,"MBP":0,"ME":1,"MEM":0,"MMM":0,"MPDD":0,"MPM":0,"MatSE":0,"MSEDI":0,"MSIT":0,"TAM":0,"UND":0,"CE":0,"ISP":0,"MIES":0,"MSiA":0,"MSR":0,"AP":0},
 {"booth":62,"name":"Lake Region Medical","id":"lake-region","linkedinID":"lake-region","empId":1944,"All":0,"AM":0,"BME":0,"ChE":0,"CmpE":0,"CS":0,"Econ":0,"EE":1,"EnvE":0,"IE":0,"MaDE":1,"MBP":0,"ME":1,"MEM":0,"MMM":0,"MPDD":0,"MPM":0,"MatSE":0,"MSEDI":0,"MSIT":0,"TAM":0,"UND":0,"CE":0,"ISP":0,"MIES":0,"MSiA":0,"MSR":0,"AP":0}
 ];
+
+/*
+var majors_list = [ 
+{name:"All",friendlyname:"All Majors"},
+{name:"AM",friendlyname:"Applied Mathematics"},
+{name:"BME",friendlyname:"Biomedical Engineering"},
+{name:"ChE",friendlyname:"Chemical Engineering"},
+{name:"CmpE",friendlyname:"Computer Engineering"},
+{name:"CS",friendlyname:"Computer Science"},
+{name:"Econ",friendlyname:"Economics"},
+{name:"EE",friendlyname:"Electrical Engineering"},
+{name:"EnvE",friendlyname:"Environmental Engineering"},
+{name:"IE",friendlyname:"Industrial Engineering"},
+{name:"MaDE",friendlyname:"Manufacturing and Design Engineering"},
+{name:"MBP",friendlyname:"Masters of Biotechnology Program"},
+{name:"ME",friendlyname:"Mechanical Engineering"},
+{name:"MEM",friendlyname:"Masters of Engineering Management"},
+{name:"MMM",friendlyname:"MSEDI + MBA"},
+{name:"MPDD",friendlyname:"Masters of Product Design and Development"},
+{name:"MPM",friendlyname:"Masters of Project Management"},
+{name:"MatSE",friendlyname:"Materials Science and Engineering"},
+{name:"MSEDI",friendlyname:"MS Engineering Design and Innovation"},
+{name:"MSIT",friendlyname:"MS Information Technology"},
+{name:"TAM",friendlyname:"Theoretical and Applied Mechanics"},
+{name:"UND",friendlyname:"Undecided"},
+{name:"CE",friendlyname:"Civil Engineering "},
+{name:"ISP",friendlyname:"Integrated Science Program"},
+{name:"MIES",friendlyname:"McCormick Integrated Engineering Studies"},
+{name:"MSiA",friendlyname:"MS in Analytics"},
+{name:"MSR",friendlyname:"Master of Science in Robotics "},
+{name:"AP",friendlyname:"Applied Physics (PhD)"}
+];
+
+// mccormick connect / cso doesnt provide typical positions recruited
+var positions_list = [ 
+{ friendlyName: 'All', name: ''} // hack
+];*/
