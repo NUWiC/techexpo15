@@ -1,0 +1,60 @@
+<!-- THIS PAGE IS CURRENTLY NOT BEING USED
+INSTEAD A MODAL ON THE COMPANY LIST PAGE IS USED TO DEFINE FILTER SETTINGS -->
+
+<ion-view title="Search/Filter Settings" left-buttons="leftButtons">
+  <ion-content>
+
+  <!--
+
+  ng-model="company.starred"
+
+  Companies matching your filters: {{filteredCompanies = (companies | filter:userFilter).length}} (of {{companies.length}} total).
+
+
+  Companies matching your filters: {{companies = (companies | filter:userFilter).length}} (of {{allCompanies.length}} total).
+
+  Showing {{filteredList.length}} of {{companies.length}} total. <br>
+  Search: <input ng-model="query"> <i class="fa fa-search"> </i> <br>
+
+  <h1> Filter Settings</h1>
+
+  <i class="fa fa-filter fa-lg"></i> Filter by:     
+  Filter by: <i class="fa fa-filter"> </i>
+<li ng-repeat="company in filteredList = (companies | filter:userFilter | filter:query | orderBy:sortType:asc)" class="thumbnail">
+ <i class="glyphicon glyphicon-star-empty listing-star"></i>
+ -->
+ 
+
+<!--
+you can have multiple majors
+and be seeking multiple positions
+(eg checkboxes, not radio buttons
+filter as written uses checkboxes - would need to change if wanted to make only one in either category selectable
+--> 
+
+
+<div class="list">
+
+        <div class="item item-divider"> Positions </div>
+        
+        <ion-checkbox ng-repeat="item in positions"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked"
+                      ng-change="includePosition(item.name)">
+          {{ item.friendlyName }}
+        </ion-checkbox>
+
+
+        <div class="item item-divider"> Majors </div>
+        
+        <ion-checkbox ng-repeat="item in majors"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked"
+                      ng-change="includeMajor(item.name)">
+          {{ item.friendlyName }}
+        </ion-checkbox>
+        
+      </div>
+
+  </ion-content>
+</ion-view>

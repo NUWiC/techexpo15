@@ -1,0 +1,134 @@
+<ion-view title="Recruiting Companies" left-buttons="leftButtons">
+
+<style>
+.matchesReqs {
+  font-weight: bold;
+}
+.strikeout {
+   text-decoration: line-through;
+}
+</style>
+
+        <ion-nav-buttons side="right">
+        <button ng-click="openModal()" class="button button-royal icon ion-funnel icon-large"></button>
+        </ion-nav-buttons>  
+
+  <ion-header-bar class="bar-subheader item-input-inset">
+  
+
+<button class="button button-small button-positive button-outline icon"
+        ng-click="sortProp='name'; asc=!asc"> 
+  <i class="fa fa-lg" ng-class="(sortProp=='name' && asc) ? 'fa-sort-alpha-desc' : 'fa-sort-alpha-asc'"></i>
+  Name 
+</button>
+
+<button class="button button-small button-calm button-outline icon" 
+        ng-click="sortProp='booth'; asc=!asc">
+  <i class="fa fa-lg" ng-class="(sortProp=='booth' && asc) ? 'fa-sort-numeric-desc' : 'fa-sort-numeric-asc'"></i>
+  Booth
+</button>
+
+&nbsp;&nbsp;&nbsp;<!-- hacky padding -->
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="search" placeholder="Search names..." ng-model="searchString" ng-change="scrollTop()">
+    </label>
+
+    <button ng-if="searchString.length"
+            class="button button-small button-icon ion-android-close input-button"
+            ng-click="clearSearch()"> </button>
+  </ion-header-bar>
+
+
+        <ion-content>
+          <ion-list>
+            <div ng-repeat="c in companies | filter:userFilter | instantNameSearch:searchString | orderBy:sortProp:asc">
+            
+            <a href="#/iday/companies/{{c.id}}"  class="item item-avatar item-icon-right">
+
+            <img src="http://placehold.it/60x60" ng-src="./img/logos/{{c.id}}/square.png" />
+             {{ c.name }}
+             <span class="item-note">{{ c.room }}</span>
+
+             <i class="icon favorite" ng-class="c.starred ? 'ion-ios7-star' : 'ion-ios7-star-outline'"></i>
+
+             <p>{{ c.industry }}</p> <!-- </a> put this here to keep star up high -->
+
+             <div class="item item-divider"> Majors &amp; Positions </div>
+     <p class="padding">
+      <span ng-repeat="p in positions" ng-class="c[p.name] ? '':'assertive'">
+         {{c[p.name] | checkmark }} {{p.friendlyName}} &nbsp;&nbsp; 
+         </span>
+         <br>
+        <span ng-repeat="m in majors" ng-class="c[m.name] ? 'matchesReqs balanced' : 'strikeout'">{{m.friendlyName}}<br></span>
+       </div>
+        <br>
+        
+        
+         </p>
+
+
+             <!--i class="icon ion-ios7-arrow-right royal"></i-->
+            </a>
+
+            </div>
+
+ 
+
+
+
+          </ion-list>
+        </ion-content>
+
+
+      
+        <ion-footer-bar class="bar-stable">Showing {{(allCompanies | filter:userFilter | instantNameSearch:searchString ).length}} of {{allCompanies.length}} total.
+</ion-footer-bar>
+
+      </ion-view>
+
+
+<script type="text/ng-template" id="modal.html">
+    <div class="modal">
+      <ion-header-bar>
+        <h1 class="title">Filter Company List</h1>
+        <div class="buttons">
+          <button class="button button-clear icon ion-close" ng-click="closeModal()"></button>
+        </div>
+      </ion-header-bar>
+      <ion-content>
+
+      Companies matching your filters: {{companies = (allCompanies | filter:userFilter).length}} (of {{allCompanies.length}} total).
+
+      <div class="item item-divider"> Positions </div>
+        
+        <ion-checkbox ng-repeat="item in positions"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked"
+                      ng-change="includePosition(item.name)">
+          {{ item.friendlyName }}
+        </ion-checkbox>
+
+<div class="item item-divider"> Majors </div>
+        
+        <ion-checkbox ng-repeat="item in majors"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked"
+                      ng-change="includeMajor(item.name)">
+          {{ item.friendlyName }}
+        </ion-checkbox>
+
+        <div class="list card">
+          <div class="item item-avatar">
+            <img src="http://placekitten.com/30/30">
+            <h2>{{user.firstName}} {{user.lastName}}</h2>
+            <p>{{user.email}}</p>
+          </div>
+          <div class="item item-image">
+            <img src="http://placekitten.com/200/150">
+          </div>
+          <div class="item item-divider">Close the modal to change your info</div>
+        </div>
+      </ion-content>
+    </div>
+  </script>

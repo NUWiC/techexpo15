@@ -1,0 +1,87 @@
+<ion-side-menus>
+
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-dark" animation="no-animation">
+      <ion-nav-back-button class="button-icon ion-ios7-arrow-back">
+      <!--SPACE ion-arrow-left-c ion-chevron-left-->&nbsp;&nbsp;
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear button-large ion-navicon" ng-click="toggleLeft()">
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-view animation="no-animation" name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">SWE Industry Day 2014</h1>
+      <!-- Side/Left Menu Title-->
+    </ion-header-bar>
+    <ion-content>
+      <ul class="list">
+        <!--
+        Note: each link has the 'menu-close' attribute BY DEFAULT
+        so the menu auto closes when clicking on one of these links
+        actually jk guess its not default
+        -->
+
+        <!-- currently home page has no real purpose
+        <a href="#/home" class="item item-icon-left" menu-close>
+          <i class="icon ion-home"></i>Home
+        </a>
+        -->
+
+        <a href="#/companies" class="item item-icon-left" menu-close>
+          <i class="icon ion-clipboard"></i>Company List
+        </a>
+        <a href="#/map" class="item item-icon-left" menu-close>
+          <i class="icon ion-map"></i>Booth Layout
+        </a>
+        
+        <!--a href="#/feedback" class="item item-icon-left" menu-close>
+          <i class="icon ion-ios7-chatboxes-outline"></i>Feedback Survey
+        </a
+
+        style="color: #aaa;"-->
+
+        <!--
+        <a href="#/feedback" class="item item-icon-left" menu-close>
+          <i class="icon ion-ios7-chatboxes-outline"></i>Feedback Survey
+          <span class="item-note balanced"> Active </span>
+        </a>
+
+        <a href="#/credits" class="item item-icon-left" menu-close> 
+          <i class="icon ion-ribbon-b"></i>Credits
+        </a>
+-->
+        <!--
+        Alternate company list views
+        more for the purpose of debugging/checking what information is
+        associated with each company at a glance
+       -->
+        <a href="#/companies-grid" class="item item-icon-left" menu-close>
+          <i class="icon balanced ion-document"></i>Companies + Grid Data
+        </a>
+        <a href="#/companies-verbose" class="item item-icon-left" menu-close>
+          <i class="icon positive ion-document-text"></i>Companies + Verbose Info
+        </a>
+         
+
+      </ul>
+
+    </ion-content>
+  </ion-side-menu>
+
+</ion-side-menus>
+
+
+
+
+      <!--ion-list>
+        <ion-item class="item item-icon-left  item-icon-right" nav-clear menu-close href="#" ng-click="toggle()">
+          <i class="icon ion-chatbubble-working"></i> Toggle
+          <i ng-show="menuData.iconOn" class="icon ion-checkmark-round"></i>
+        </ion-item>
+      </ion-list-->
+

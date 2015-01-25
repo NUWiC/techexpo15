@@ -1,0 +1,141 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" 
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" 
+preserveAspectRatio="xMinYMin meet" 
+viewBox="{{startX}} {{startY}} {{mapWidth}} {{mapHeight}}">
+
+<g id="ballroom">
+<title> Hilton Orrington Grand Ballroom </title>
+  <text x="535"  y="-75" class="roomTitle"> Grand Ballroom </text>
+  
+  <path class="roomOutline"  
+        d="
+        M 200,10
+        l 1040,0
+        l 0,900
+        l -855,0
+        l -72, -35
+        l -48, 100
+        l -135, -75
+        l 65, -105
+        l 0,-785
+        z" />
+  <g transform="translate(215, 850)" \>
+  <g transform="rotate(30,0,0)">
+    <text class="bNum" x="30" y="30"> Entrance </text>
+  </g>
+  </g>
+  <!-- not exactly sure what this square is, on map from tech expo was a yellow box -->
+   <g transform="translate(460, 660)">
+    <rect class="pillar" x="0" y="0" width="60" height="60"></rect>
+    <text class="bNum" x="30" y="30"> Pillar </text>
+  </g>
+</g><!--/#ballroom -->
+
+
+<g id="heritage" transform="translate(250, 1200)">
+  <title> Hilton Orrington Heritage Room </title>
+  <text x="235"  y="-100" class="roomTitle"> Heritage Room </text>
+  <path class="roomOutline"
+        d="
+        M 0,0
+        l 865,0
+        l 0,595
+        l -140,0
+        l 0,25
+        l-120,0
+        l 0,-25
+        l -605, 0
+        z" />
+    <g transform="translate(635, 575)" \>
+    <text class="bNum" x="30" y="30"> Entrance </text>
+  </g>
+</g><!--/#heritage -->
+
+<g>
+
+      
+      <!-- ng-click="go('iday/companies/{{b.compId}}')" -->
+    <g ng-repeat="b in booths | reverse" ng-click="tooltipIsVisible = !tooltipIsVisible">
+
+
+    <g ng-attr-transform="translate({{b.x}}, {{b.y}})">
+
+
+<g id="{{b.compId}}-tooltip" class="st18 tooltip" ng-show="tooltipIsVisible" ng-click="go('/companies/{{b.compId}}')">
+<!-- possibly apply ng class to display favorites diff color? -->
+        <path id="background"
+              class="tooltip-bg" fill="#dff"
+              d="
+              M -35, -75
+              L  90, -75
+              L  90,-10 
+              L  38,-10 
+              L  30,-3 
+              L  22,-10 
+              L -35,-10 Z"></path>       
+        <text x="-20" y="-30" class="tooltip-label"> Click for details </text>
+        <image class="compLogo" 
+             x="-30" y="-70"
+             width="120" height="30"
+             ng-xlink-href="http://lizzb.github.io/iday/www/img/logos/{{b.compId}}/wide.png" 
+             xlink:href=""/>
+
+      </g>
+
+
+    <!-- need to add an ng-if rotate property exists to avoid plethora of errors in console -->
+    <!-- apparently using ng if or ng switch inside ng repeat INSIDE svg is more complicated than i realized.... going to do easy/lame route of just assigning a rotate value to every booth 
+ng-attr-transform="rotateBooth({{b.rotate}});"> also tried rotate(rroratebooth(b.rotate), 0, 0)
+didn't try casting i guess
+    --><!-- ({{b.rotate}},0,0)-->
+
+    <!-- this still throws errors in console, but it does exactly what i want so... shrug -->
+    <g ng-attr-transform="rotate({{b.rotate}},0,0)">
+        <rect class="booth" ng-attr-id="{{b.compId}}"
+              x="0" y="0"
+              ng-attr-width="{{bWidth}}" ng-attr-height="{{bHeight}}"/>
+      
+      <!-- below format shows
+            itty bitty square logo in top left corner, 
+            booth number centered in middle,
+            and company id at bottom of booth, some of which are long and uggo -->
+      <!--
+      <image class="compLogo" 
+             x="2" y="2"
+             width="20" height="20"
+             ng-xlink-href="http://lizzb.github.io/iday/www/img/logos/{{b.compId}}/square.png" 
+             xlink:href=""/>
+
+          <text class="boothlabel boothId boothCompId"
+            x="{{ bWidth/2 }}"
+            y="{{ bHeight*3/4 }}">
+            {{b.compId}}        
+          </text>
+          <text class="boothlabel compId boothNumId"
+            ng-attr-x="{{bWidth/2 }}"
+            ng-attr-y="{{bHeight/2 }}">
+            {{b.bNum}}        
+          </text>
+        -->
+
+        <!-- new format, larger logo image -->
+        <image class="compLogo" 
+             x="0" y="0"
+             width="59" height="59"
+             ng-xlink-href="http://lizzb.github.io/iday/www/img/logos/{{b.compId}}/square.png" 
+             xlink:href="http://placehold.it/60x60"/>
+
+          <!--text class="boothlabel boothId boothCompId"
+            x="{{ bWidth/2 }}"
+            y="{{ bHeight*3/4 }}">
+            {{b.compId}}        
+          </text-->
+          <text class="boothlabel compId boothNumId" 
+                ng-attr-x="{{bWidth + 15}}"
+                ng-attr-y="{{bHeight - 5}}">
+            {{b.bNum}}        
+          </text>
+          <style>
+.booth{fill: white;}
+          </style>

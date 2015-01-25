@@ -1,0 +1,126 @@
+<ion-view title="Recruiting Companies" left-buttons="leftButtons">
+
+<ion-nav-buttons side="right">
+  <button ng-click="openModal()" class="button button-royal icon ion-funnel icon-large"></button>
+</ion-nav-buttons>  
+
+
+<ion-header-bar class="bar-subheader item-input-inset">
+<button class="button button-small button-positive button-outline icon"
+        ng-click="sortProp='name'; asc=!asc"> 
+  <i class="fa fa-lg" ng-class="(sortProp=='name' && asc) ? 'fa-sort-alpha-desc' : 'fa-sort-alpha-asc'"></i>
+  Name 
+</button>
+
+
+
+<button class="button button-small button-calm button-outline icon" 
+        ng-click="sortProp='booth'; asc=!asc">
+  <i class="fa fa-lg" ng-class="(sortProp=='booth' && asc) ? 'fa-sort-numeric-desc' : 'fa-sort-numeric-asc'"></i>
+  Booth
+</button>
+
+&nbsp;&nbsp;&nbsp;<!-- hacky padding -->
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="search" placeholder="Search names..." ng-model="searchString" ng-change="scrollTop()">
+    </label>
+
+    <button ng-if="searchString.length"
+            class="button button-small button-icon ion-android-close input-button"
+            ng-click="clearSearch()"> </button>
+  </ion-header-bar>
+
+
+
+  <ion-header-bar class="bar-subheader item-input-inset">
+<button class="button button-small button-positive button-outline icon"
+        ng-click="sortProp='name'; asc=!asc"> 
+  <i class="fa fa-lg" ng-class="(sortProp=='name' && asc) ? 'fa-sort-alpha-desc' : 'fa-sort-alpha-asc'"></i>
+  Name 
+</button>
+<button class="button button-small button-calm button-outline icon" 
+        ng-click="sortProp='booth'; asc=!asc">
+  <i class="fa fa-lg" ng-class="(sortProp=='booth' && asc) ? 'fa-sort-numeric-desc' : 'fa-sort-numeric-asc'"></i>
+  Booth
+</button>
+  </ion-header-bar>
+
+        <ion-content>
+          <ion-list>
+            <div ng-repeat="c in companies | filter:userFilter | instantNameSearch:searchString | orderBy:sortProp:asc">
+            <!-- ui-sref="tabs.companies.detail({companyNameId: c.compId})" -->
+
+            <!-- http://lizzb.github.io/img/logos/carsdotcom/wide.png -->
+            <a href="#/iday/companies/{{c.id}}"  class="item item-avatar item-icon-right">
+
+            <img src="http://placehold.it/60x60" ng-src="./img/logos/{{c.id}}/square.png" />
+
+
+              
+             {{ c.name }}  <!-- <h2> <i></i> {{ c.name }}</h2> h2 makes it harder to fit on one line-->
+             <span class="item-note">{{ c.room }}</span>
+
+             <i class="icon favorite" ng-class="c.starred ? 'ion-ios7-star' : 'ion-ios7-star-outline'"></i>
+
+             <p>{{ c.industry }}<!-- {{ c.room }}.... {{ c.id }} -->
+
+             
+             </p> 
+
+             <!--i class="icon ion-ios7-arrow-right royal"></i-->
+            </a>
+
+            </div>
+
+ 
+
+
+
+          </ion-list>
+        </ion-content>
+
+
+
+        <ion-footer-bar class="bar-stable">Showing {{(allCompanies | filter:userFilter | instantNameSearch:searchString ).length}} of {{allCompanies.length}} total.
+</ion-footer-bar>
+
+      </ion-view>
+
+
+<script type="text/ng-template" id="modal.html">
+    <div class="modal">
+      <ion-header-bar>
+        <h1 class="title">Filter Company List</h1>
+        <div class="buttons">
+          <button class="button button-clear icon ion-close" ng-click="closeModal()"></button>
+        </div>
+      </ion-header-bar>
+      <ion-content>
+
+      Companies matching your filters: {{companies = (allCompanies | filter:userFilter).length}} (of {{allCompanies.length}} total).
+
+      <div class="item item-divider"> Positions </div>
+        
+        <ion-checkbox ng-repeat="item in positions"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked"
+                      ng-change="includePosition(item.name)">
+          {{ item.friendlyName }}
+        </ion-checkbox>
+
+<div class="item item-divider"> Majors </div>
+        
+        <ion-checkbox ng-repeat="item in majors"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked"
+                      ng-change="includeMajor(item.name)">
+          {{ item.friendlyName }}
+        </ion-checkbox>
+
+      </ion-content>
+    </div>
+  </script>
+
+
+

@@ -1,0 +1,129 @@
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-45359239-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- TODO: 
+footer take up less space + center # results on footer
+perhaps use status bar looking thing instead
+header shrink
+ -->
+
+
+<ion-view title="Recruiting Companies" left-buttons="leftButtons">
+
+        <ion-nav-buttons side="right">
+        <button ng-click="openModal()" class="button button-royal icon ion-funnel icon-large"></button>
+        </ion-nav-buttons>  
+
+  <ion-header-bar class="bar-subheader item-input-inset">
+  
+  <!--button class="button button-clear filter-button"> Filter Cancel </button-->
+
+<button class="button button-small button-positive button-outline icon"
+        ng-click="sortProp='name'; asc=!asc"> 
+  <i class="fa fa-lg" ng-class="(sortProp=='name' && asc) ? 'fa-sort-alpha-desc' : 'fa-sort-alpha-asc'"></i>
+  Name 
+</button>
+
+
+
+<button class="button button-small button-calm button-outline icon" 
+        ng-click="sortProp='booth'; asc=!asc">
+  <i class="fa fa-lg" ng-class="(sortProp=='booth' && asc) ? 'fa-sort-numeric-desc' : 'fa-sort-numeric-asc'"></i>
+  Booth
+</button>
+<!--
+Showing {{(allCompanies | filter:userFilter | instantNameSearch:searchString ).length}} of {{allCompanies.length}} total.--> 
+&nbsp;&nbsp;&nbsp;<!-- hacky padding -->
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios7-search placeholder-icon"></i>
+      <input type="search" placeholder="Search companies..." ng-model="searchString" ng-change="scrollTop()">
+    </label>
+
+    <button ng-if="searchString.length"
+            class="button button-small button-icon ion-ios7-close-empty input-button"
+            ng-click="clearSearch()"> </button>
+  </ion-header-bar>
+
+
+<!--  filter:userFilter | instantNameSearch:searchString | -->
+        <ion-content>
+          <ion-list>
+            <div ng-repeat="c in companies | filter:userFilter | filter:searchString | orderBy:sortProp:asc">
+
+
+            <!-- ui-sref="tabs.companies.detail({companyNameId: c.compId})" -->
+
+            <!-- http://lizzb.github.io/img/logos/carsdotcom/wide.png -->
+            <a href="#/companies/{{c.id}}"  class="item item-avatar item-icon-right">
+
+<!-- energized is yellow -->
+
+            <img src="http://placehold.it/60x60" ng-src="./img/logos/{{c.id}}/square.png" />
+
+            <i class="icon-left favorite" ng-class="c.starred ? 'ion-ios7-star' : 'ion-ios7-star-outline'"></i>
+
+
+              
+             {{ c.name }}
+             <!-- <h2> <i></i> {{ c.name }}</h2> h2 makes it harder to fit on one line-->
+             <!--
+             <span class="item-note">{{ c.room }}</span>
+             -->
+
+              <i class="icon positive ion-ios7-arrow-right"></i>
+
+             <!-- class="icon favorite" ng-class="c.starred ? 'ion-ios7-star' : 'ion-ios7-star-outline'"></i-->
+
+
+             <!-- deactivating star cuz doesnt totally work 
+             
+             <button ng-click="toggleFavorite(c);" class=" icon button button-icon favorite" ng-class="c.starred ? 'ion-ios7-star' : 'ion-ios7-star-outline'"></button>
+
+             -->
+
+             <!--a class="button button-icon icon ion-settings"></a-->
+           
+
+              <!--i class="icon icon-circle ion-star" ng-class="c.starred ? 'icon-circle' : 'icon-circle-outline'"  ></i-->
+
+              <!--
+             <p>{{ c.industry }}</p>
+
+             -->
+
+             <p>{{ c.room }}, Table {{c.booth}}</p>
+
+
+
+             <!-- {{ c.room }}.... {{ c.id }} -->
+             <!--i class="icon ion-ios7-arrow-right royal"></i-->
+            </a>
+
+            </div>
+
+          </ion-list>
+        </ion-content>
+
+        <div id="result-count" class="bar bar-footer bar-stable">
+          <div class="title">Showing {{(allCompanies | filter:userFilter | filter:searchString ).length}} of {{allCompanies.length}} total.</div>
+        </div>
+<!-- instantNameSearch:searchString ).length}} -->
+
+
+<!--ion-footer-bar id="result-count" class="bar bar-footer bar-stable">Showing {{(allCompanies | filter:userFilter | instantNameSearch:searchString ).length}} of {{allCompanies.length}} total.
+</ion-footer-bar-->
+
+      </ion-view>
+
+
+
+
+
+<!--div class="bar bar-footer bar-balanced">
+  <div class="title">....centered....</div></div-->

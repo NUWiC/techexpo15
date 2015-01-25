@@ -1,0 +1,357 @@
+
+<style>
+
+.nope { font-weight: 700; }
+
+ /* not intended to be clickable item */
+.item-info {
+  height: 40px; /* down from 54 */
+  line-height: 8px; /* down from 20 */
+  color: #666; /*#676767;*/ /* from #444 */
+}
+
+.item-info .icon {
+  font-size: 28px; /* down from 32 */
+}
+.company-website {}
+.item-divider { max-height: 30px; line-height: 10px;}
+
+
+
+/*
+.item-divider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #f5f5f5;
+  color: #222;
+  font-weight: bold; }
+
+.item-note {
+  float: right;
+  color: #aaa;
+  font-size: 14px; }
+
+*/
+/**
+ * Items
+ 
+.item {
+  box-sizing: border-box;
+  height:54px;
+  line-height: 20px;
+   text-overflow: ellipsis;
+  vertical-align: baseline;
+  white-space: nowrap;
+  word-wrap: break-word;
+
+
+
+  margin: -1px;
+  padding: 16px;
+
+  padding-left: 54px; // for avatar
+
+  border-color: #ddd;
+  border-width: 1px;
+  border-style: solid;
+
+  background-color: #fff;
+  
+  color: #444; // 68 68 68
+  font-size: 16px; 
+
+  display: block;
+  position: relative;
+  z-index: 2;
+  
+  }
+
+
+font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+
+.item {
+border-color: #ddd;
+background-color: #fff;
+color: #444;
+position: relative;
+z-index: 2;
+display: block;
+margin: -1px;
+padding: 16px;
+border-width: 1px;
+border-style: solid;
+font-size: 16px;
+}
+
+.item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
+element.style {
+}
+.item-icon-left {
+padding-left: 54px;
+}
+
+
+
+ .item-icon-left .icon {
+  left: 11px;
+  display: flex;
+  display: -webkit-box;
+
+display: -webkit-flex;
+display: -moz-box;
+display: -moz-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-ms-flex-align: center;
+-webkit-align-items: center;
+-moz-align-items: center;
+align-items: center;
+position: absolute;
+top: 0;
+height: 100%;
+font-size: 32px;
+ }
+
+ .item-icon-left .icon:before, .item-icon-right .icon:before {
+display: block;
+width: 32px;
+text-align: center;
+}
+.ion-briefcase:before {
+content: "\f26c";
+}
+
+  * --------------------------------------------------
+ */
+
+
+
+
+
+/* footer default styling is too tall */
+#result-count { 
+  height: 24px; 
+  padding: 0;
+  margin: 0;
+}
+#result-count .title {
+  font-size: 12px;
+  line-height: 24px;
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+}
+
+
+/*
+
+<ion-footer-bar class="bar-stable">Showing {{(allCompanies | filter:userFilter | instantNameSearch:searchString ).length}} of {{allCompanies.length}} total.
+</ion-footer-bar>
+
+
+
+<!--div class="bar bar-footer bar-balanced">
+  <div class="title">....centered....</div></div-->
+*/
+
+.favorite {
+  color: dodgerblue;
+  font-size: x-large;
+  font-weight: strong;
+  z-index: -2; /* need to figure out how to make this lay on top!! */
+}
+
+
+
+
+/*http://codepen.io/lizz/pen/tfpzm?editors=110*/
+.icon-circle,
+.icon-circle-large,
+.icon-circle-small{
+  position: relative;
+  display: inline-block;
+  margin: -1px;
+  /*padding: 16px;*/
+
+  width: 45px; /* 60*/
+  height: 45px; 
+  font-size:40px; 
+  
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  border-radius: 50%;
+
+  border: 1px solid #ebebeb;
+  background: rgb(0, 161, 225); /*#ececec;ebebeb*/
+  color: #fff;
+  text-align:center;
+  /*vertical-align: middle;*/
+}
+
+.icon-circle-large {
+  width: 100px;
+  height: 100px;
+  font-size: 64px; /* 64, originally 60 */
+  padding: 16px;
+}
+.icon-circle-small {
+  width: 24px;
+  height: 24px;
+  font-size: 20px;
+}
+
+.icon-circle {
+  font-size: 32px;
+  width: 36px;
+  height: 36px;
+  vertical-align: middle;
+}
+
+/*.icon-circle i, .icon-circle-small i, .icon-circle-large i { vertical-align: middle; }*/
+
+.icon-circle-outline {
+   border: 1px solid rgb(0, 161, 225);
+   background: transparent;
+  color: rgb(0, 161, 225);
+   /*color: #8a6de9;*/
+}
+
+.icon-circle-outline i {  }
+
+
+
+
+
+/* Styles go here */
+/*
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}*/
+
+
+
+.boothNumId, .boothCompId {
+   text-anchor: middle;
+  alignment-baseline: middle;
+}
+
+ /* room outline */  
+.roomOutline, .room {
+  fill: #efefef;
+  stroke-width: 2;
+  stroke: black;
+}
+
+
+img.list-logo {
+  width: 40px;
+  top: 5px;
+  position: absolute;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+ .booth {
+    fill:#b8ecff;
+    stroke-width:2;
+    stroke:rgb(0,0,0);
+  }
+  .boothlabel {
+    text-anchor: "middle";
+    alignment-baseline: "middle";
+  }
+  
+  .boothId {font-size: 11px;}
+  .compId {font-size: 14px;}
+  
+  .bNum {
+    font-size: 14px;
+    text-anchor: middle;
+    alignment-baseline: middle;
+    
+  }
+        
+     
+
+.pillar {
+  fill: none;
+  stroke-width: 2;
+  stroke: black;
+}
+
+
+.roomTitle {
+  font-weight: bold;
+  font-family: Georgia;
+  font-size  : 40pt;
+  /*stroke : #000000;
+  fill: #000000;*/
+}
+
+/* http://jsbin.com/pulaw/4/edit*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Empty. Add your own CSS if you like 
+old css.....
+.svg-container {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      padding-bottom: 90%;
+      vertical-align: middle;
+      overflow: hidden;
+    }
+
+      figure { margin: 10; }
+    
+  element.style {
+  }
+  svg:not(:root) { overflow: hidden; }
+  .svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+  }
+
+
+  .locationLink {
+  display: inline-block;
+  padding: 22px;
+  width: 42px;
+  border-radius: 4px;
+  list-style: none;
+  text-align: center;
+  font-size: 32px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+*/
