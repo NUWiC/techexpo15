@@ -31,8 +31,8 @@ viewBox="{{startX}} {{startY}} {{mapWidth}} {{mapHeight}}">
 }
 .tooltip { display:inline; opacity:0.85; fill: #fff; stroke: lime; stroke-width: 1;}
 
+.booth{fill: white;}
 </style>
-
 
 <g id="ballroom">
 <title> Hilton Orrington Grand Ballroom </title>
@@ -79,13 +79,15 @@ viewBox="{{startX}} {{startY}} {{mapWidth}} {{mapHeight}}">
         l 0,-25
         l -605, 0
         z" /-->
-    <text transform="translate(635, 575)" class="bNum" x="30" y="30"> Entrance </text>
+    <text transform="translate(885, 1775)" class="bNum" x="30" y="30"> Entrance </text>
 </g><!--/#heritage -->
 
+<!-- transform="translate(635, 575)" 635+250, 575+1200-->
 
 
 
-<g>
+
+<!--g>
 
     <g ng-click="go('/companies/{{b.compId}}')">
     <!--g ng-repeat="b in booths | reverse"
@@ -97,13 +99,13 @@ viewBox="{{startX}} {{startY}} {{mapWidth}} {{mapHeight}}">
              ng-click="dialogIsVisible = true">
              -->
 
-    <g ng-attr-transform="translate({{b.x}}, {{b.y}})">
+    <!--g ng-attr-transform="translate({{b.x}}, {{b.y}})">
 
 
 <g id="{{b.compId}}-tooltip" class="st18 tooltip dialog" ng-show="tooltipIsVisible" ng-click="go('iday/companies/{{b.compId}}')">
 <!-- possibly apply ng class to display favorites diff color? -->
 <!--class="tooltip-bg" fill="#dff"-->
-        <path id="new-tooltip" fill="#fff"
+        <!--path id="new-tooltip" fill="#fff"
               d="
               M -35, -75
               L  90, -75
@@ -122,63 +124,55 @@ viewBox="{{startX}} {{startY}} {{mapWidth}} {{mapHeight}}">
 
       </g>
 
-      
+      -->
 
   
       
+<g>
+      <title> Booths </title>
 
-
+<g ng-repeat="b in booths" ng-click="go('/companies/{{b.compId}}')"
+ng-attr-transform="translate({{b.x}}, {{b.y}}) rotate({{b.rotate}},0,0)">
 
 
     <!-- this still throws errors in console, but it does exactly what i want so... shrug .... see notes lower-->
-    <g ng-attr-transform="rotate({{b.rotate}},0,0)">
-        <rect class="booth" ng-attr-id="{{b.compId}}"
-              x="0" y="0"
-              ng-attr-width="{{bWidth}}" ng-attr-height="{{bHeight}}"/>
-      
-      <!-- below format shows
-            itty bitty square logo in top left corner, 
-            booth number centered in middle,
-            and company id at bottom of booth, some of which are long and uggo -->
-      <!--
-      <image class="compLogo" 
-             x="2" y="2"
-             width="20" height="20"
-             ng-xlink-href="http://lizzb.github.io/iday/www/img/logos/{{b.compId}}/square.png" 
-             xlink:href=""/>
+    <!--g ng-attr-transform="rotate({{b.rotate}},0,0)"-->
 
-          <text class="boothlabel boothId boothCompId"
-            x="{{ bWidth/2 }}"
-            y="{{ bHeight*3/4 }}">
-            {{b.compId}}        
-          </text>
-          <text class="boothlabel compId boothNumId"
-            ng-attr-x="{{bWidth/2 }}"
-            ng-attr-y="{{bHeight/2 }}">
-            {{b.bNum}}        
-          </text>
-        -->
+        <rect class="booth"
+              ng-attr-id="{{b.compId}}"
+              x="0" y="0"
+              ng-attr-width="{{bWidth}}"
+              ng-attr-height="{{bHeight}}"/>
 
         <!-- new format, larger logo image -->
-        <image class="compLogo" 
+         <image class="compLogo" 
+             x="0" y="0"
+             ng-attr-width="{{bWidth}}" ng-attr-height="{{bHeight}}"
+             xlink:href=""
+             ng-xlink-href="./img/logos/{{b.compId}}/square.png" />
+             />
+        <!--image class="compLogo" 
              x="0" y="0"
              width="59" height="59"
              ng-xlink-href="http://lizzb.github.io/iday/www/img/logos/{{b.compId}}/square.png" 
-             xlink:href="http://placehold.it/60x60"/>
+             xlink:href="http://placehold.it/60x60"/-->
 
-          <!--text class="boothlabel boothId boothCompId"
-            x="{{ bWidth/2 }}"
-            y="{{ bHeight*3/4 }}">
-            {{b.compId}}        
+          <!--
+          iday version 
+          <text class="boothlabel compId boothNumId"
+                ng-attr-transform="rotateLabel({{b.rotate}}, 0, 0)"
+                ng-attr-x="5"
+                ng-attr-y="{{bHeight + 10}}">
+            {{b.bNum}}        
           </text-->
+
+
           <text class="boothlabel compId boothNumId" 
                 ng-attr-x="{{bWidth + 15}}"
                 ng-attr-y="{{bHeight - 5}}">
             {{b.bNum}}        
           </text>
-          <style>
-.booth{fill: white;}
-          </style>
+          
 
 <!-- for lower left width-12 and height-8 looked good -->
 
@@ -190,11 +184,15 @@ viewBox="{{startX}} {{startY}} {{mapWidth}} {{mapHeight}}">
 
 <!--  ng-click="go('/companies/{{b.compId}}')" in rect doesnt work -->
 
-    
+</ion-scroll>
+    </ion-view>
 
 
 
-<style>
+
+
+
+<!--style>
 st0{fill:#FFFFFF;}
   .st1{fill:none;stroke:#EFEFEF;stroke-width:2;stroke-miterlimit:10;}
   .st2{fill:#EFEFEF;}
@@ -351,7 +349,7 @@ st0{fill:#FFFFFF;}
           <line class="st17" x1="197" y1="203" x2="536" y2="203"></line>
           <line class="st17" x1="197" y1="275" x2="536" y2="275"></line>
         </g-->
-      </g> 
+      <!--/g> 
      
 
 
@@ -380,19 +378,15 @@ st0{fill:#FFFFFF;}
         <line class="st24 dialog-divider" x1="118.883" y1="140.512" x2="467.833" y2="140.512"></line>
 
         <g id="closebutton" class="st21" ng-click="dialogIsVisible = false">
-              
+       <!--       
           <!-- close button fill... removed enclosing g -->
- <rect  x="390" y="98" width="64.5" height="30" rx="4" ry="4" fill="black" class="st25 close-button"></rect>
+<!-- <rect  x="390" y="98" width="64.5" height="30" rx="4" ry="4" fill="black" class="st25 close-button"></rect>
             <!--path class="st25" d="M454.5,124.5c0,2.209-1.791,4-4,4h-57c-2.209,0-4-1.791-4-4v-23c0-2.209,1.791-4,4-4h57
         c2.209,0,4,1.791,4,4V124.5z"></path-->
           
-          <text x="404" y="118" class="close-label st0">Close</text>
+         <!-- <text x="404" y="118" class="close-label st0">Close</text>
         </g>
-
-</svg>
-
-</ion-scroll>
-    </ion-view>
+-->
 
 
         <!-- need to add an ng-if rotate property exists to avoid plethora of errors in console -->
