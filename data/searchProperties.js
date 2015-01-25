@@ -1,38 +1,48 @@
 // friendlyName = The name to display in the interface
 // name = the csv/json-safe name for filtering etc
 
+var majors_list = [ 
+{name:"All",friendlyname:"All Majors"},
+{name:"AM",friendlyname:"Applied Mathematics"},
+{name:"BME",friendlyname:"Biomedical Engineering"},
+{name:"ChE",friendlyname:"Chemical Engineering"},
+{name:"CmpE",friendlyname:"Computer Engineering"},
+{name:"CS",friendlyname:"Computer Science"},
+{name:"Econ",friendlyname:"Economics"},
+{name:"EE",friendlyname:"Electrical Engineering"},
+{name:"EnvE",friendlyname:"Environmental Engineering"},
+{name:"IE",friendlyname:"Industrial Engineering"},
+{name:"MaDE",friendlyname:"Manufacturing and Design Engineering"},
+{name:"MBP",friendlyname:"Masters of Biotechnology Program"},
+{name:"ME",friendlyname:"Mechanical Engineering"},
+{name:"MEM",friendlyname:"Masters of Engineering Management"},
+{name:"MMM",friendlyname:"MSEDI + MBA"},
+{name:"MPDD",friendlyname:"Masters of Product Design and Development"},
+{name:"MPM",friendlyname:"Masters of Project Management"},
+{name:"MatSE",friendlyname:"Materials Science and Engineering"},
+{name:"MSEDI",friendlyname:"MS Engineering Design and Innovation"},
+{name:"MSIT",friendlyname:"MS Information Technology"},
+{name:"TAM",friendlyname:"Theoretical and Applied Mechanics"},
+{name:"UND",friendlyname:"Undecided"},
+{name:"CE",friendlyname:"Civil Engineering "},
+{name:"ISP",friendlyname:"Integrated Science Program"},
+{name:"MIES",friendlyname:"McCormick Integrated Engineering Studies"},
+{name:"MSiA",friendlyname:"MS in Analytics"},
+{name:"MSR",friendlyname:"Master of Science in Robotics "},
+{name:"AP",friendlyname:"Applied Physics (PhD)"}
+];
+
+// mccormick connect / cso doesnt provide typical positions recruited
 var positions_list = [ 
-  { friendlyName: 'Full Time', name: 'fte'},
+  /*{ friendlyName: 'Full Time', name: 'fte'},
   { friendlyName: 'Intern', name: 'intern' },
   { friendlyName: 'Co-Op', name: 'coop' },
-  //{ friendlyName: 'MS/PhD', name: 'msphd'}
   { friendlyName: 'MS', name: 'ms'},
   { friendlyName: 'PhD', name: 'phd'},
-  { friendlyName: 'International', name: 'intl'}
+  { friendlyName: 'International', name: 'intl'}*/
 ];
-
-
-var majors_list = [ 
-  { friendlyName: 'AM - Applied Math', name: 'am'},
-  { friendlyName: 'BME - Biomedical Eng.', name: 'bme'},
-  { friendlyName: 'ChemE - Chemical Engineering', name: 'chem'},
-  { friendlyName: 'CivE - Civil Engineering', name: 'civ'},
-  { friendlyName: 'CE - Computer Engineering', name: 'ce'},
-  { friendlyName: 'CS - Computer Science', name: 'cs'},
-  //{ friendlyName: 'CS - Computer Science (BS/McCormick)', name: 'cs'},
-  //{ friendlyName: 'CS - Computer Science (BA/Weinberg)', name: 'csa'},
-  { friendlyName: 'EE - Electrical Eng.', name: 'ee'},
-  { friendlyName: 'EnvE - Environmental Eng.', name: 'enve'},
-  { friendlyName: 'IE - Industrial Eng.', name: 'ie'},
-  { friendlyName: 'MaDE', name: 'made'},
-  { friendlyName: 'MatSci - Material Science', name:'matsci' },
-  { friendlyName: 'MechE - Mechanical Engineering', name: 'mech' },
-  { friendlyName: 'Non-engineering', name: 'non' } //name: 'noneng' }
-];
-
 
 // Industries list from McCormick Connect / CSO /MyInterfase
-//var industry_categories_list = [
 var industries_list = [  
 "Accounting",
 "Advertising/Marketing",
@@ -108,3 +118,21 @@ var industries_list = [
 "Veterinary",
 "Waste Management",
 ];
+
+
+  /*{ friendlyName: 'AM - Applied Math', name: 'am'},
+  { friendlyName: 'BME - Biomedical Eng.', name: 'bme'},
+  { friendlyName: 'ChemE - Chemical Engineering', name: 'chem'},
+  { friendlyName: 'CivE - Civil Engineering', name: 'civ'},
+  { friendlyName: 'CE - Computer Engineering', name: 'ce'},
+  { friendlyName: 'CS - Computer Science', name: 'cs'},
+  //{ friendlyName: 'CS - Computer Science (BS/McCormick)', name: 'cs'},
+  //{ friendlyName: 'CS - Computer Science (BA/Weinberg)', name: 'csa'},
+  { friendlyName: 'EE - Electrical Eng.', name: 'ee'},
+  { friendlyName: 'EnvE - Environmental Eng.', name: 'enve'},
+  { friendlyName: 'IE - Industrial Eng.', name: 'ie'},
+  { friendlyName: 'MaDE', name: 'made'},
+  { friendlyName: 'MatSci - Material Science', name:'matsci' },
+  { friendlyName: 'MechE - Mechanical Engineering', name: 'mech' },
+  { friendlyName: 'Non-engineering', name: 'non' } //name: 'noneng' }
+  */
