@@ -206,6 +206,7 @@ lnkd_website*/
               // had to rename
               // description property belongs to
               // the official one provided to SWE through company registration
+              //this.companies[i].descriptionCSO = this.csoData[k].cso_profile;
               this.companies[i].descriptionCSO = this.csoData[k].cso_profile;
               
               break;
@@ -220,14 +221,14 @@ lnkd_website*/
           // use the linkedinID to connect the linkedin info
           if(this.linkedinData[k].linkedinID == this.companies[i].linkedinID)
           {
-            //this.companies[i].name = lnkd_name;
+            this.companies[i].nameLNKD = this.linkedinData[k].lnkd_name;
             // typically formatting of name on linkedin is best
             // formatting from CSO is sometimes all caps or whatever
 
             // not all of these properties may exist!
 
-            this.companies[i].linkedinIndustry = this.linkedinData[k].lnkd_industry;
-            this.companies[i].companyType = this.linkedinData[k].lnkd_type;
+            this.companies[i].industryLNKD = this.linkedinData[k].lnkd_industry;
+            this.companies[i].typeLNKD = this.linkedinData[k].lnkd_type;
             this.companies[i]["size"] = this.linkedinData[k].lnkd_size;
             this.companies[i].founded = this.linkedinData[k].lnkd_founded;
             this.companies[i].specialties = this.linkedinData[k].lnkd_specialties;
@@ -235,15 +236,50 @@ lnkd_website*/
             this.companies[i].hqState = this.linkedinData[k].lnkd_hqstate;
             this.companies[i].hqZip = this.linkedinData[k].lnkd_hqzip;
             // might need to get hqcountry
-            this.companies[i].description2 = this.linkedinData[k].lnkd_description;
-            this.companies[i].companyWebsite = this.linkedinData[k].lnkd_website;
+            this.companies[i].descriptionLNKD = this.linkedinData[k].lnkd_description;
+            this.companies[i].websiteLNKD = this.linkedinData[k].lnkd_website;
 
             // this isnt necessary to save as a property... // or ["Source Page URL"];
-            this.companies[i].linkedin = "http://www.linkedin.com/company/" + this.companies[i].linkedinID;
+            //this.companies[i].linkedin = "http://www.linkedin.com/company/" + this.companies[i].linkedinID;
 
-            break;
+           
+          break;
           } 
+
+          /*  if (this.companies[i].nameLNKD)
+          this.companies[i].name = this.companies[i].nameLNKD;
+
+        if (this.companies[i].websiteLNKD)
+          this.companies[i].website = this.companies[i].websiteLNKD;
+
+        if(!this.companies[i].description) {
+          if(!this.companies[i].descriptionCSO)
+            this.companies[i].description = this.companies[i].descriptionLNKD;
+          else
+            this.companies[i].description =this.companies[i].descriptionCSO;
+          */
         }
+
+
+        // Choose most reputable properties to display in details page
+        // ----------------------------------------------------------
+        // Linkedin info is more reputable
+        // (e.g. organization type, name, industry)
+        // but not all companies have a LinkedIn page
+        /*
+        this.companies[i].description = "";
+        this.companies[i].industry = "";
+        this.companies[i].type = "";
+        this.companies[i].city = "";
+        this.companies[i].state = "";
+        this.companies[i].zip = "";
+        this.companies[i].hQcity = "";
+        this.companies[i].hQstate = "";
+        this.companies[i].hQzip = "";
+        this.companies[i].size = "";
+
+        */
+
 
       }
       
