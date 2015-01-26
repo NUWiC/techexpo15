@@ -2,15 +2,16 @@
 //
 //
 //
-app.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, AttendeesService, CareerFairService) {
+app.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, CareerFairService) {
   
   $scope.responses = {};
  // console.log($scope.responses);
  // $scope.attendees = AttendeesService.getAttendees();
   
   // Make sure that you link the booth and company info prior to 
-  // brining the company info into the main controller
-  // cuz that will be used by all other views, dont want to repeat work
+  // bringing the company info into the main controller
+  // cuz that will be used by all other views,
+  // dont want to repeat work
   
   // maybe a factory for that bit??
 
@@ -95,7 +96,7 @@ app.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, AttendeesSer
           
         var p = 0;
         var m = 0;
-        var i = 0;
+        
 
         if(includedPositions.length <= 0)
         {
@@ -113,6 +114,10 @@ app.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, AttendeesSer
         //console.log("does company match filters?");
         //console.log(includedPositions);
         //console.log(includedMajors);
+
+        var i = 0;
+
+        /*
         // only show companies matching the users filter requirements
         for (i = 0; i < includedPositions.length; i++)
         {
@@ -128,6 +133,15 @@ app.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, AttendeesSer
                 }
             }
         }
+        */
+
+        // TEMPORARY HACK BECAUSE THERE ARE NO POSITIONS
+        for (var j = 0; j < includedMajors.length; j++)
+                {
+                    if(company[includedMajors[j]]) return company;
+                }
+
+
         return;
     }
 
@@ -165,7 +179,7 @@ app.controller('CompanyListCtrl', function($scope, $ionicScrollDelegate, $ionicM
   $scope.scrollBottom = function() { $ionicScrollDelegate.scrollBottom(true); };
   $scope.scrollTop = function() { $ionicScrollDelegate.scrollTop(true); };
 
-  $ionicModal.fromTemplateUrl('templates/filter-modal.html', { //templates/settings
+  $ionicModal.fromTemplateUrl('templates/filter-modal.html', {
     scope: $scope
   }).then(function(modal) {$scope.modal = modal;})
 
@@ -186,13 +200,6 @@ app.controller('CompanyDetailCtrl', function($scope, company) {
 })
 
 
-
-
-
-
-
-
-
 /*
 //
 // Filter Settings
@@ -202,35 +209,3 @@ app.controller('FilterSettingsCtrl', function($scope) {
   
 })*/
 
-
-
-/*
-
-
-
-
-//
-// Attendee List - in MainCtrl
-//
-app.controller('AttendeesCtrl', function($scope) {
-  //$scope.attendees = attendees;
-  
-})
-
-//
-// Attendee Activity / Toggles
-//
-app.controller('AttendeeActivityCtrl', function($scope) {
-  
-  $scope.activity = [];
-  $scope.arrivedChange = function(attendee) {
-    var msg = attendee.firstname + ' ' + attendee.lastname;
-    msg += (!attendee.arrived ? ' has arrived, ' : ' just left, '); 
-    msg += new Date().getMilliseconds();
-    $scope.activity.push(msg);
-    if($scope.activity.length > 3) {
-      $scope.activity.splice(0, 1);
-    }
-  };
-  
-});*/

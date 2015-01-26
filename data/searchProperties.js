@@ -34,7 +34,7 @@ var majors_list = [
 
 // mccormick connect / cso doesnt provide typical positions recruited
 var positions_list = [ 
-{ friendlyName: 'All', name: ''} // hack
+//{ friendlyName: 'All', name: ''} // hack
   /*{ friendlyName: 'Full Time', name: 'fte'},
   { friendlyName: 'Intern', name: 'intern' },
   { friendlyName: 'Co-Op', name: 'coop' },
@@ -120,6 +120,17 @@ var industries_list = [
 "Waste Management",
 ];
 
+
+/*
+var majors_list = [ 
+{name:"All",friendlyname:"All Majors"},
+{name:"AM",friendlyname:"Applied Mathematics"},
+];
+
+// mccormick connect / cso doesnt provide typical positions recruited
+var positions_list = [ 
+{ friendlyName: 'All', name: ''} // hack
+];*/
 
   /*{ friendlyName: 'AM - Applied Math', name: 'am'},
   { friendlyName: 'BME - Biomedical Eng.', name: 'bme'},
