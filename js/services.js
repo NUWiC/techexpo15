@@ -15,11 +15,12 @@ app.service('CareerFairService', function($q) {
 
     // these variables come from separate js files in data folder
     companies: company_list, 
-    linkedinData: company_list_linkedinData,
-    csoData: company_list_csoData,
     booths: booth_info,
     majors: majors_list,
     positions: positions_list,
+    linkedinData: company_list_linkedinData,
+    csoData: company_list_csoData,
+    
 
     // getBoothLayout
     getBooths: function() { return this.booths; },
@@ -111,18 +112,6 @@ app.service('CareerFairService', function($q) {
       
       
     //},
-    
-
-// {"empId":1586,
-//"cso_organizationName":"Atomatic Mechanical Services",
-//"cso_branch":null,"cso_industry":"Engineering",
-//"cso_orgType":"Private",
-//"cso_website":"http://www.atomatic.com",
-//"cso_city":"Arlington Heights",
-//"cso_state":"IL",
-//"cso_zip":60004,
-//"cso_country":"United States",
-//"cso_profile":"For over 65 years Atomatic Mechanical Services has been dedicated to quality design installation and service of HVAC systems for the commercial institutional industrial and residential building markets throughout metropolitan Chicago. Our solid reputation is built on high standards innovative designs and exceptional customer service. We honor our word and commitments. Atomaticâ€™s ultimate goal is to continually meet the changing needs of our customers and exceed their expectations.","cso_onlineapp":""},
 
     //
     // Links all company information/properties
@@ -196,7 +185,7 @@ app.service('CareerFairService', function($q) {
               this.companies[i].industryCSO = this.csoData[k].cso_industry; 
               this.companies[i].industry = this.csoData[k].cso_industry; //industry;
 
-              this.companies[i].majorsCSO = this.csoData[k].majors; // typical majors
+              // .... this.companies[i].majorsCSO = this.csoData[k].majors; // typical majors
               
               
               // facebook // twitter // linkedin
@@ -223,19 +212,19 @@ app.service('CareerFairService', function($q) {
 
 /*
 "linkedinID":"3red-trading",
-    "name_lnkd":"3Red Trading",
-    "industry_lnkd":"Financial Services",
-    "type_lnkd":"Privately Held",
-    "size_lnkd":"11-50 employees",
-    "founded_lnkd":"2011",
-    "website_lnkd":"http://www.3redgroup.com/",
-    "hqcity_lnkd":"Chicago",
-    "hqstate_lnkd":"IL",
-    "hqzip_lnkd":"60605",
-    "hqcountry_lnkd":"United States",
-    "specialties_lnkd":"",
-    "description_lnkd":"3
-    */
+"name_lnkd":"3Red Trading",
+"industry_lnkd":"Financial Services",
+"type_lnkd":"Privately Held",
+"size_lnkd":"11-50 employees",
+"founded_lnkd":"2011",
+"website_lnkd":"http://www.3redgroup.com/",
+"hqcity_lnkd":"Chicago",
+"hqstate_lnkd":"IL",
+"hqzip_lnkd":"60605",
+"hqcountry_lnkd":"United States",
+"specialties_lnkd":"",
+"description_lnkd":"3
+*/
         // link the relevant information from the linkedIn data
         // to each company object
         for (k = 0; k < this.linkedinData.length; k++)
@@ -383,77 +372,13 @@ hqCountry
     //      }  }
 
 
-/*app.service('AttendeesService', function($q) {
-  
-  return {
-    
-    attendees: [
-    { id: '1', firstname: 'Nicolas', lastname: 'Cage', vegetarian: false, shirtSize: 'L' },
-    { id: '2', firstname: 'Jean-Claude', lastname: 'Van Damme', vegetarian: false, shirtSize: 'L' },
-    { id: '3', firstname: 'Keanu', lastname: 'Reeves', vegetarian: true, shirtSize: 'S' },
-    { id: '4', firstname: 'Steven', lastname: 'Seagal', vegetarian: true, shirtSize: 'M' }
-  ],
-    
-
-    getAttendees: function() {
-      return this.attendees;
-    },
-    
-    getAttendee: function(attendeeId) {
-      var dfd = $q.defer();
-      this.attendees.forEach(function(attendee) {
-        if (attendee.id === attendeeId) dfd.resolve(attendee);
-      });
-
-      return dfd.promise;
-    }
-  }
-})*/
 
 
-
-
-
-/* CONFUSED MYSELF
-
-    getCompanies: function() {
-
-      for (var i = 0; i < this.companies.length; i++) {
-        
-        // link the relevant information from the booths to the corresponding company
-        for (var j = 0; j < this.booths.length; j++) {
-          
-          if(this.companies[i].booth == this.booths[j].bNum) {
-            this.companies[i].room = this.booths[j].room;
-            this.companies[i].floor = this.booths[j].floor;
-            
-            this.booths[j].compId = this.companies[i].id;
-            this.booths[j].id = "booth" + this.booths[j].bNum;
-            
-            //this.companies[i].booth = this.booths[j].id;
-            break;
-          }
-        }
 
         
 
 
 /*
-https://www.myinterfase.com/mccormick_northwestern/contactregistration.aspx?emp_id=
-
-"empId":1586,
-"cso_organizationName":"Atomatic Mechanical Services",
-"cso_branch":null,
-"cso_industry":"Engineering",
-"cso_orgType":"Private",
-"cso_website":"http://www.atomatic.com",
-"cso_city":"Arlington Heights",
-"cso_state":"IL",
-"cso_zip":60004,
-"cso_country":"United States",
-"cso_profile":"For over 65 years Atomatic Mechanical Services has been dedicated to quality design installation and service of HVAC systems for the commercial institutional industrial and residential building markets throughout metropolitan Chicago. Our solid reputation is built on high standards innovative designs and exceptional customer service. We honor our word and commitments. Atomaticâ€™s ultimate goal is to continually meet the changing needs of our customers and exceed their expectations.",
-"cso_onlineapp":""
-
 
         // ----------------------------------------------------------
         //

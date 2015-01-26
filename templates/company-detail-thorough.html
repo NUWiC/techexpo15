@@ -8,10 +8,6 @@
   max-width: 760px; /* need better values */
   margin: auto;
 }
-
-.linkedinblue {
-  color: #4875B4;
-}
 </style>
 
 <ion-view title="{{company.name}}" left-buttons="leftButtons">
@@ -49,118 +45,77 @@
             <a href="https://www.myinterfase.com/mccormick_northwestern/contactregistration.aspx?emp_id={{company.empId}}" target="_blank"><i class="icon royal ion-share"></i> </a>
         </div>
 
-<!-- ng-show="{{company.linkedinID}}"  -->
-  <a class="item item-divider item-icon-left linkedinblue" href="http://www.linkedin.com/company/{{company.linkedinID}}" target="_blank">
-            <i class="icon ion-social-linkedin linkedinblue"></i> Linkedin
-        </a>
-
-  <a class="positive item item-divider item-icon-right" href="http://www.linkedin.com/company/{{company.linkedinID}}" target="_blank"><i class="icon linkedinblue ion-social-linkedin"></i>LinkedIn <span class="item-note">(linkedinID: {{company.linkedinID}})</span></a>
-
-
 <!-- item-info mutes the color from black to grey looks nicer -->
-
-
-    <!-- ++++++++++ COMPANY NAME ++++++++++ -->
     <div class="item item-icon-left item-info">
       <i class="royal icon ion-folder"></i>{{company.nameCSO}}
     </div>
-
-    <div ng-show="{{company.branch}}" class="item item-icon-left item-info">
-      <i class="royal icon ion-network"></i>Branch: {{company.branch}}
-    </div>
-
-    <div class="item item-icon-left item-info">
-      <i class="linkedinblue icon ion-folder"></i>{{company.nameLNKD}}
-    </div>
-
-    <!-- ++++++++++ COMPANY WEBSITE ++++++++++ -->
 
     <div class="item item-icon-left item-info">
       <i class="royal icon ion-link"></i>{{company.websiteCSO}}
     </div>
 
     <div class="item item-icon-left item-info">
-      <i class="linkedinblue icon ion-link"></i>{{company.websiteLNKD}}
-    </div>
-
-    <!-- ++++++++++ COMPANY INDUSTRY ++++++++++ -->
-
-    <div class="item item-icon-left item-info">
       <i class="royal icon ion-briefcase"></i>Industry: {{company.industryCSO}}
     </div>
-
-     <div class="item item-icon-left item-info">
-      <i class="linkedinblue icon ion-briefcase"></i>Industry: {{company.industryLNKD}}
-    </div>
-
-<!--div class="item"-->
-    <p class="padding linkedinblue"><!-- style="color: #666;" -->
-    {{company.specialties}}
-    </p>
-    <!--/div-->
-
-        <div ng-show="{{company.size}}" class="item item-icon-left item-info">
-            <i class="linkedinblue icon ion-person-stalker "></i> {{company.size}}
-        </div>
-
-<!--
-        <div ng-show="{{company.founded}}" class="item item-icon-left item-info">
-            <i class="icon ion-person-stalker "></i> {{company.founded}}
-        </div>
--->
-
-
-    <!-- ++++++++++ COMPANY TYPE ++++++++++ -->
 
     <div class="item item-icon-left item-info">
       <i class="royal icon ion-ios7-information"></i>Type: {{company.typeCSO}}
     </div>
 
     <div class="item item-icon-left item-info">
-      <i class="linkedinblue icon ion-ios7-information"></i>Type: {{company.typeLNKD}}
-    </div>
-
-
-
-
-
-
-    <!-- ++++++++++ COMPANY LOCATION ++++++++++ -->    
-
-    <div class="item item-icon-left item-info">
       <i class="royal icon ion-ios7-location"></i> {{company.city}}, {{company.state}}&nbsp; {{company.zip}}
     </div>
-
-    <div class="item item-icon-left item-info"><!-- ng-show="{{company.hqCity}}" -->
-      <i class="linkedinblue icon ion-pin"></i>HQ: {{company.hqCity}} {{company.hqState}}&nbsp; {{company.hqZip}} {{company.hqCountry}}
-    </div>
-
-
-
-
-    <!-- ++++++++++ COMPANY DESCRIPTION ++++++++++ -->
-
+   
     <div class="royal item item-divider item-icon-left"><i class="royal icon ion-document-text"></i> Profile</div>
     <p class="padding">{{company.descriptionCSO}}</p>
 
-     <div class="linkedinblue item item-divider item-icon-left"><i class="positive icon ion-document-text"></i> Profile</div>
+
+
+    <!-- --------------------- LINKEDIN DATA  --------------------- -->
+
+
+
+    <a class="positive item item-divider item-icon-right" href="http://www.linkedin.com/company/{{company.linkedinID}}" target="_blank"><i class="icon positive ion-social-linkedin"></i>LinkedIn <span class="item-note">(linkedinID: {{company.linkedinID}})</span></a>
+
+
+
+    <div class="item item-icon-left item-info">
+      <i class="positive icon ion-folder"></i>{{company.nameLNKD}}
+    </div>
+
+    <div class="item item-icon-left item-info">
+      <i class="positive icon ion-link"></i>{{company.websiteLNKD}}
+    </div>
+
+    <div class="item item-icon-left item-info">
+      <i class="positive icon ion-briefcase"></i>Industry: {{company.industryLNKD}}
+    </div>
+
+    <div class="item item-icon-left item-info">
+      <i class="positive icon ion-ios7-information"></i>Type: {{company.typeLNKD}}
+    </div>
+
+    <div class="item item-icon-left item-info">
+      <i class="positive icon ion-ios7-location"></i> {{company.hqCity}}, {{company.hqState}}&nbsp; {{company.hqZip}} {{company.hqCountry}}
+    </div>
+   
+    <div class="positive item item-divider item-icon-left"><i class="positive icon ion-document-text"></i> Profile</div>
     <p class="padding">{{company.descriptionLNKD}}</p>
-    
 
 
 
 
 
 
-  
 
 
-    
-
-    
 
 
-<!--
+
+
+
+
+
 
 
         <div class="item item-divider">Description</div>
@@ -169,8 +124,6 @@
         <div class="item item-divider item-icon-right">About {{company.name}}
             <a href="{{company.website}}" target="_blank"><i class="icon positive ion-share"></i> </a>
         </div>
-
--->
 
 
         <!--
@@ -184,11 +137,9 @@
 
 
         <!-- Mandatory McCormick Connect Field -->
-        <!--
         <div class="item item-icon-left item-info">
             <i class="icon ion-briefcase"></i> {{company.industry}}
         </div>
-        -->
 
         <!--
 <div class="item item-icon-left">
@@ -202,21 +153,23 @@
 -->
 
 
+        <div ng-show="{{company.size}}" class="item item-icon-left item-info">
+            <i class="icon ion-person-stalker "></i> {{company.size}}
+        </div>
+
         <!-- Mandatory McCormick Connect Field -->
-        <!--
         <div class="item item-icon-left item-info">
             <i class="icon ion-ios7-information"></i> {{company.type}}
-            <!--&nbsp;&nbsp;&nbsp;(LinkedIn: {{company.companyType}})--
-        </div> -->
+            <!--&nbsp;&nbsp;&nbsp;(LinkedIn: {{company.companyType}})-->
+        </div>
 
-<!--
         <div class="item item-icon-left item-info">
             <i class="icon ion-ios7-location"></i> {{company.city}}, {{company.state}}&nbsp; {{company.zip}}
         </div>
 
-        -->
-
-        
+        <div ng-show="{{company.hqCity}}" class="item item-icon-left item-info">
+            <i class="icon ion-pin"></i> HQ: {{company.hqCity}} {{company.hqState}}&nbsp; {{company.hqZip}}
+        </div>
 
         <!-- Mandatory McCormick Connect Field -->
         <!--div class="item item-divider item-icon-left">
@@ -234,15 +187,12 @@
     <i class="icon ion-social-twitter"></i>Twitter
 </a-->
 
-        
+        <a ng-show="{{company.linkedinIDNum}}" class="item item-divider item-icon-left" href="http://www.linkedin.com/company/{{company.linkedinIDNum}}" target="_blank">
+            <i class="icon ion-social-linkedin"></i> Linkedin
+        </a>
         <div>
             <br>
         </div>
-
-
-            </ion-content>
-</ion-view>
-
 
         <!-- linkedinIDNum and linkedinID is friendly name -->
 
@@ -264,16 +214,19 @@
         <!--div class="button-bar">
   
   <a class="button button-positive icon ion-social-facebook" href="{{company.facebook}}" target="_blank">
+
   <a class="button button-calm icon ion-social-twitter" href="{{company.twitter}}" target="_blank">
+
   <a class="button button-dark icon ion-social-linkedin" href="{{company.linkedin}}" target="_blank">
 </a>
 </div-->
-<!--
+
         <div class="item item-divider"> Company JSON </div>
 <p>
 {{company | json}}
 </p>
--->
 
+    </ion-content>
+</ion-view>
 
 
