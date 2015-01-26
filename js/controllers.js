@@ -197,6 +197,7 @@ app.controller('CompanyListCtrl', function($scope, $ionicScrollDelegate, $ionicM
 //
 app.controller('CompanyDetailCtrl', function($scope, company) {
   $scope.company = company;
+  console.log(company);
 })
 
 

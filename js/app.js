@@ -38,7 +38,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
     
     .state('sidemenu.map', {
       url: "map",
-      views: { 'menuContent' :{ templateUrl: "templates/map.html", controller: "CompanyMapCtrl" } }
+      //views: { 'menuContent' :{ templateUrl: "templates/map.html", controller: "CompanyMapCtrl" } }
+      views: { 'menuContent' :{ templateUrl: "templates/map-hilton-orrington.html", controller: "CompanyMapCtrl" } }
+
     })
     
 

@@ -20,6 +20,29 @@ app.service('CareerFairService', function($q) {
     booths: booth_info,
     majors: majors_list,
     positions: positions_list,
+
+    // getBoothLayout
+    getBooths: function() { return this.booths; },
+    getMajors: function() { return this.majors; },
+    getPositions: function() { return this.positions; },
+    
+    getBooth: function(boothNumber) {
+      var dfd = $q.defer();
+      this.booths.forEach(function(booth) {
+        if (booth.bNum === boothNumber) dfd.resolve(booth);
+      });
+
+      return dfd.promise;
+    },
+
+    getCompany: function(companyId) {
+      var dfd = $q.defer();
+      this.companies.forEach(function(company) {
+        if (company.id === companyId) dfd.resolve(company);
+      });
+
+      return dfd.promise;
+    },
     
     // Booth information includes:
     // id - int - the unique booth number used to identify this booth and link it to a company
@@ -60,7 +83,13 @@ app.service('CareerFairService', function($q) {
 
     //},
     
-    setCompanyBoothInfo: function() {
+    //
+    //
+    // setCompanyBoothInfo accomplished by getting companies
+    // which should happen just once
+    //
+    //
+   // setCompanyBoothInfo: function() {
       // companies:
       // contains information about the companies
       // and who/what they are recruiting at this particular career fair
@@ -81,20 +110,8 @@ app.service('CareerFairService', function($q) {
       
       
       
-    },
-    // getBoothLayout
-    getBooths: function() { return this.booths; },
-    getMajors: function() { return this.majors; },
-    getPositions: function() { return this.positions; },
+    //},
     
-    getBooth: function(boothNumber) {
-      var dfd = $q.defer();
-      this.booths.forEach(function(booth) {
-        if (booth.bNum === boothNumber) dfd.resolve(booth);
-      });
-
-      return dfd.promise;
-    },
 
 // {"empId":1586,
 //"cso_organizationName":"Atomatic Mechanical Services",
@@ -121,18 +138,24 @@ app.service('CareerFairService', function($q) {
           // but its a small data set
       for (var i = 0; i < this.companies.length; i++) {
         
-        // link the relevant information from the booths to the corresponding company
+        
         for (var j = 0; j < this.booths.length; j++) {
           
-          if(this.companies[i].booth == this.booths[j].bNum) {
+          if(this.companies[i].booth == this.booths[j].bNum)
+          {
+            // Make relevant information from the booths
+            // a property of the corresponding company
+            // (details to display to user, e.g. room name)
             this.companies[i].room = this.booths[j].room;
             this.companies[i].floor = this.booths[j].floor;
             
+            // Also assign relevant properties of company to booth
+            // e.g. its id to link to company details page
             this.booths[j].compId = this.companies[i].id;
             this.booths[j].id = "booth" + this.booths[j].bNum;
             
-            //this.companies[i].booth = this.booths[j].id;
-            break;
+            // Stop looping through booths if you found match already
+            break; 
           }
         }
 
@@ -174,11 +197,13 @@ app.service('CareerFairService', function($q) {
         for (k = 0; k < this.linkedinData.length; k++)
         {
           
-          if(this.linkedinData[k].empId == this.companies[i].empId )
-          {
+          //if(this.linkedinData[k].empId == this.companies[i].empId )
 
+          // use the linkedinID to find the linkedin info
+          if(this.linkedinData[k].linkedinID == this.companies[i].linkedinID)
+          {
             // name = companyName
-            this.companies[i].linkedinID = this.linkedinData[k].linkedinID;
+            //this.companies[i].linkedinID = this.linkedinData[k].linkedinID;
             this.companies[i].linkedinIndustry = this.linkedinData[k].industry;
             this.companies[i].specialties = this.linkedinData[k].specialties;
             this.companies[i]["size"] = this.linkedinData[k].companySize;
@@ -207,14 +232,7 @@ app.service('CareerFairService', function($q) {
       return this.companies;
     },
     
-    getCompany: function(companyId) {
-      var dfd = $q.defer();
-      this.companies.forEach(function(company) {
-        if (company.id === companyId) dfd.resolve(company);
-      });
-
-      return dfd.promise;
-    },
+    
 
     getCompanyByBooth: function(boothNum) {
       var dfd = $q.defer();
@@ -259,7 +277,8 @@ app.service('CareerFairService', function($q) {
     //      if(company.booth === booths[i].bNum) {
     //      }  }
 
-app.service('AttendeesService', function($q) {
+
+/*app.service('AttendeesService', function($q) {
   
   return {
     
@@ -284,7 +303,7 @@ app.service('AttendeesService', function($q) {
       return dfd.promise;
     }
   }
-})
+})*/
 
 
 
