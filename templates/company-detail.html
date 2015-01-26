@@ -64,13 +64,13 @@ instead of boolean 0 1 its 0 "label that exists to prompt un-starring" -->
 
 
         <div class="item item-divider">Description</div>
-       <!-- <p class="padding">{{company.description}} -->
+        <p class="padding">{{company.description}}
         </p>
-<!--
+
 <div class="item item-divider item-icon-right">About {{company.name}}
     <a href="{{company.website}}" target="_blank"><i class="icon positive ion-share"></i> </a>
 </div>
--->
+
 
 <!--
 <div class="item item-divider assertive item-icon-right ">About {{company.name}}
@@ -85,10 +85,15 @@ instead of boolean 0 1 its 0 "label that exists to prompt un-starring" -->
 <!-- Mandatory McCormick Connect Field -->        
 <div class="item item-icon-left item-info">
   <i class="icon ion-briefcase"></i>
-  <!--{{company.industry}} (LinkedIn: {{company.industryLNKD}})-->
+  {{company.industry}}
 </div>
 
 <!--
+<div class="item item-icon-left">
+    <i class="icon ion-briefcase"></i>
+    {{company.linkedinIndustry}}
+</div>
+
 <p class="padding" style="color: #666;">
     {{company.specialties}}
 </p>
@@ -102,7 +107,7 @@ instead of boolean 0 1 its 0 "label that exists to prompt un-starring" -->
 <!-- Mandatory McCormick Connect Field -->
 <div class="item item-icon-left item-info">
   <i class="icon ion-ios7-information"></i>
-  {{company.type}} &nbsp;&nbsp;&nbsp;(LinkedIn: {{company.typeLNKD}})
+  {{company.type}} <!--&nbsp;&nbsp;&nbsp;(LinkedIn: {{company.companyType}})-->
 </div>
 
 <div class="item item-icon-left item-info">
@@ -131,8 +136,9 @@ instead of boolean 0 1 its 0 "label that exists to prompt un-starring" -->
     <i class="icon ion-social-twitter"></i>Twitter
 </a-->
 
-<a ng-show="{{company.linkedinID}}" class="item item-divider item-icon-left" href="http://www.linkedin.com/company/{{company.linkedinID}}" target="_blank">
-    <i class="icon ion-social-linkedin"></i> Linkedin 
+<a ng-show="{{company.linkedinIDNum}}" class="item item-divider item-icon-left" href="http://www.linkedin.com/company/{{company.linkedinIDNum}}" target="_blank">
+    <i class="icon ion-social-linkedin"></i>
+    Linkedin 
 </a>
 <div><br></div>
 

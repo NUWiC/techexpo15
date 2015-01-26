@@ -1,36 +1,4 @@
 app.service('CareerFairService', function($q) {
-
-// https://www.myinterfase.com/mccormick_northwestern/contactregistration.aspx?emp_id=
-
-/* // cso / my interfase / mccormickconnect crawled properties
-empID
-cso_organizationName
-cso_branch
-cso_website
-cso_industry
-cso_orgType
-cso_city
-cso_state
-cso_zip
-cso_country
-cso_profile
-cso_onlineapp
-*/
-
-        // linkedin crawled data properties
-/*linkedinID
-lnkd_name
-lnkd_industry
-lnkd_type
-lnkd_size
-lnkd_founded
-lnkd_specialties
-lnkd_hqcity
-lnkd_hqstate
-lnkd_hqzip
-lnkd_description
-lnkd_website*/
-    
   
   return {
     // Company grid contains:
@@ -46,23 +14,10 @@ lnkd_website*/
     //companies, //company_grid,
 
     // these variables come from separate js files in data folder
-
-    // companies:
-    // contains information about the companies
-    // and who/what they are recruiting at this particular career fair
     companies: company_list, 
-
-    // booths:
-    // contains information about both the booths "real life location" (room, floor)
-    // as well as their svg map location (coordinates, rotation)
-    // assumption that booth - company mapping is exactly 1:1
-    // ideally no empty booths, and each company has only one booth
-    // empty booths are more likely though (cancellations)
-    booths: booth_info,
-
     linkedinData: company_list_linkedinData,
     csoData: company_list_csoData,
-    
+    booths: booth_info,
     majors: majors_list,
     positions: positions_list,
 
@@ -80,7 +35,6 @@ lnkd_website*/
       return dfd.promise;
     },
 
-    // feed in a unique identifier that will not change
     getCompany: function(companyId) {
       var dfd = $q.defer();
       this.companies.forEach(function(company) {
@@ -108,7 +62,6 @@ lnkd_website*/
     // in my data i'm using empId (the cso id number)
     // to link btw tables
     // janky databases basically
-    
     //getLinkedInInfo: function(companyId) {
       /*var result = null;
       this.companies.forEach(function(company) {
@@ -120,27 +73,57 @@ lnkd_website*/
       // assumes one will match
 
       //this.linkedinData.forEach(function(company) {
-      //  for (var i = 0; i < this.linkedinData.length; i++){
+      //  for (var i = 0; i < this.linkedinData.length; i++)
+      //  {
       //    if(linkedinData[i]["empId"] == companyId )
-      //    {} 
+      //    {
+      //    
+      //    } 
       //  }
+
     //},
     
-
+    //
+    //
     // setCompanyBoothInfo accomplished by getting companies
     // which should happen just once
     //
-   // setCompanyBoothInfo: function() {  
-      // so iterate through all booths and
-      // find the matching company for each (if any) -----
-      // then copy the info the company details page
-      // would care about that is booth-specific
+    //
+   // setCompanyBoothInfo: function() {
+      // companies:
+      // contains information about the companies
+      // and who/what they are recruiting at this particular career fair
+      // booths:
+      // contains information about both the booths "real life location" (room, floor)
+      // as well as their svg map location (coordinates, rotation)
+      // assumption that booth - company mapping is exactly 1:1
+      // ideally no empty booths, and each company has only one booth
+      // empty booths are more likely though (cancellations)
+      
+      // so iterate through all booths and find the matching company for each (if any) -----
+      
+      // then copy the info the company details page would care about that is booth-specific
       // assign from the booth info
       // eg. link to booth on map, room, floor user-friendly data
       // company doesnt care about x, y, coordinates on the map,
       // ..... or whether it is active(matche params, display diff on map?)
+      
+      
+      
     //},
     
+
+// {"empId":1586,
+//"cso_organizationName":"Atomatic Mechanical Services",
+//"cso_branch":null,"cso_industry":"Engineering",
+//"cso_orgType":"Private",
+//"cso_website":"http://www.atomatic.com",
+//"cso_city":"Arlington Heights",
+//"cso_state":"IL",
+//"cso_zip":60004,
+//"cso_country":"United States",
+//"cso_profile":"For over 65 years Atomatic Mechanical Services has been dedicated to quality design installation and service of HVAC systems for the commercial institutional industrial and residential building markets throughout metropolitan Chicago. Our solid reputation is built on high standards innovative designs and exceptional customer service. We honor our word and commitments. Atomaticâ€™s ultimate goal is to continually meet the changing needs of our customers and exceed their expectations.","cso_onlineapp":""},
+
     //
     // Links all company information/properties
     // and returns the FULL list of companies
@@ -176,109 +159,72 @@ lnkd_website*/
           }
         }
 
-
+    
         
         // link the relevant information from the CSO mccormickconnect data
         // to each company object
         var k = 0;
         for (k = 0; k < this.csoData.length; k++)
         {
-          if(this.csoData[k].empID == this.companies[i].empID )
+          //csoData[k]["empId"] 
+          if(this.csoData[k].empId == this.companies[i].empId )
           {
-            // name = cso_organizationName
-              this.companies[i].branch = this.csoData[k].cso_branch;
-              this.companies[i].website = this.csoData[k].cso_website;
+            // name = organizationname
+              this.companies[i].branch = this.csoData[k].cso_branch; // branch
+              this.companies[i].website = this.csoData[k].cso_website; //website;
               
-              // usually on mccormick connect these fields
-              // are empty or incorrect
-              // facebook, twitter, linkedin
-              // these fields ommitted because unnecessary detail
-              // phone, fax, address1,address2, country  
+              // facebook // twitter // linkedin
+              //this.companies[i].facebook = this.csoData[k].facebook;
+              //this.companies[i].twitter = this.csoData[k].twitter;
+              //this.companies[i].linkedin = this.csoData[k].linkedin;
 
-              // onlineApp also usually empty
-
-              this.companies[i].industry = this.csoData[k].cso_industry;
-              this.companies[i]["type"] =this.csoData[k].cso_orgType;
-              this.companies[i].city = this.csoData[k].cso_city;
-              this.companies[i].state = this.csoData[k].cso_state;
-              this.companies[i].zip = this.csoData[k].cso_zip;
-              
-              // had to rename
-              // description property belongs to
-              // the official one provided to SWE through company registration
-              //this.companies[i].descriptionCSO = this.csoData[k].cso_profile;
-              this.companies[i].descriptionCSO = this.csoData[k].cso_profile;
-              
+              this.companies[i].industry = this.csoData[k].cso_industry; //industry;
+              this.companies[i]["type"] =this.csoData[k].cso_orgType;  //this.csoData[k]["type"]; 
+              // address1 // ,address2: // country
+              this.companies[i].city = this.csoData[k].cso_city; //city;
+              this.companies[i].state = this.csoData[k].cso_state;  //state;
+              this.companies[i].zip = this.csoData[k].cso_zip;  //zip;
+              // phone  // fax
+              // had to rename, description property belongs to the official SWE provided one
+              this.companies[i].descriptionCSO = this.csoData[k].cso_profile;  //profile;
+              // onlineApp
               break;
           } 
         }
-
 
         // link the relevant information from the linkedIn data
         // to each company object
         for (k = 0; k < this.linkedinData.length; k++)
         {
-          // use the linkedinID to connect the linkedin info
+          
+          //if(this.linkedinData[k].empId == this.companies[i].empId )
+
+          // use the linkedinID to find the linkedin info
           if(this.linkedinData[k].linkedinID == this.companies[i].linkedinID)
           {
-            this.companies[i].nameLNKD = this.linkedinData[k].lnkd_name;
-            // typically formatting of name on linkedin is best
-            // formatting from CSO is sometimes all caps or whatever
+            // name = companyName
+            //this.companies[i].linkedinID = this.linkedinData[k].linkedinID;
+            this.companies[i].linkedinIndustry = this.linkedinData[k].industry;
+            this.companies[i].specialties = this.linkedinData[k].specialties;
+            this.companies[i]["size"] = this.linkedinData[k].companySize;
+            this.companies[i].companyType = this.linkedinData[k].type;
+            this.companies[i].founded = this.linkedinData[k].founded;
 
-            // not all of these properties may exist!
+            this.companies[i].hqCity = this.linkedinData[k].hqCity;
+            this.companies[i].hqState = this.linkedinData[k].hqState;
+            this.companies[i].hqZip = this.linkedinData[k].hqZip;
+            this.companies[i].description2 = this.linkedinData[k].blurb;
+            this.companies[i].companyWebsite = this.linkedinData[k].website;
 
-            this.companies[i].industryLNKD = this.linkedinData[k].lnkd_industry;
-            this.companies[i].typeLNKD = this.linkedinData[k].lnkd_type;
-            this.companies[i]["size"] = this.linkedinData[k].lnkd_size;
-            this.companies[i].founded = this.linkedinData[k].lnkd_founded;
-            this.companies[i].specialties = this.linkedinData[k].lnkd_specialties;
-            this.companies[i].hqCity = this.linkedinData[k].lnkd_hqcity;
-            this.companies[i].hqState = this.linkedinData[k].lnkd_hqstate;
-            this.companies[i].hqZip = this.linkedinData[k].lnkd_hqzip;
-            // might need to get hqcountry
-            this.companies[i].descriptionLNKD = this.linkedinData[k].lnkd_description;
-            this.companies[i].websiteLNKD = this.linkedinData[k].lnkd_website;
-
-            // this isnt necessary to save as a property... // or ["Source Page URL"];
-            //this.companies[i].linkedin = "http://www.linkedin.com/company/" + this.companies[i].linkedinID;
-
-           
-          break;
+            // or ["Source Page URL"];
+            this.companies[i].linkedin = "http://www.linkedin.com/company/" + this.companies[i].linkedinID;
+           /*  type  founded  hqAddress  Source Page url  hqCountry  */
+              break;
           } 
-
-          /*  if (this.companies[i].nameLNKD)
-          this.companies[i].name = this.companies[i].nameLNKD;
-
-        if (this.companies[i].websiteLNKD)
-          this.companies[i].website = this.companies[i].websiteLNKD;
-
-        if(!this.companies[i].description) {
-          if(!this.companies[i].descriptionCSO)
-            this.companies[i].description = this.companies[i].descriptionLNKD;
-          else
-            this.companies[i].description =this.companies[i].descriptionCSO;
-          */
         }
 
 
-        // Choose most reputable properties to display in details page
-        // ----------------------------------------------------------
-        // Linkedin info is more reputable
-        // (e.g. organization type, name, industry)
-        // but not all companies have a LinkedIn page
-        /*
-        this.companies[i].description = "";
-        this.companies[i].industry = "";
-        this.companies[i].type = "";
-        this.companies[i].city = "";
-        this.companies[i].state = "";
-        this.companies[i].zip = "";
-        this.companies[i].hQcity = "";
-        this.companies[i].hQstate = "";
-        this.companies[i].hQzip = "";
-        this.companies[i].size = "";
-
-        */
+        
 
 
       }
@@ -288,15 +234,6 @@ lnkd_website*/
     
     
 
-
-
-
-
-
-
-
-
-
     getCompanyByBooth: function(boothNum) {
       var dfd = $q.defer();
       this.companies.forEach(function(company) {
@@ -305,10 +242,6 @@ lnkd_website*/
 
       return dfd.promise;
     },
-
-
-
-
 
     /* this doesnt work bleh */
      getNextCompany: function(currCompanyId) {
@@ -345,24 +278,179 @@ lnkd_website*/
     //      }  }
 
 
+/*app.service('AttendeesService', function($q) {
+  
+  return {
+    
+    attendees: [
+    { id: '1', firstname: 'Nicolas', lastname: 'Cage', vegetarian: false, shirtSize: 'L' },
+    { id: '2', firstname: 'Jean-Claude', lastname: 'Van Damme', vegetarian: false, shirtSize: 'L' },
+    { id: '3', firstname: 'Keanu', lastname: 'Reeves', vegetarian: true, shirtSize: 'S' },
+    { id: '4', firstname: 'Steven', lastname: 'Seagal', vegetarian: true, shirtSize: 'M' }
+  ],
+    
+
+    getAttendees: function() {
+      return this.attendees;
+    },
+    
+    getAttendee: function(attendeeId) {
+      var dfd = $q.defer();
+      this.attendees.forEach(function(attendee) {
+        if (attendee.id === attendeeId) dfd.resolve(attendee);
+      });
+
+      return dfd.promise;
+    }
+  }
+})*/
+
+
+
+
+
+/* CONFUSED MYSELF
+
+    getCompanies: function() {
+
+      for (var i = 0; i < this.companies.length; i++) {
+        
+        // link the relevant information from the booths to the corresponding company
+        for (var j = 0; j < this.booths.length; j++) {
+          
+          if(this.companies[i].booth == this.booths[j].bNum) {
+            this.companies[i].room = this.booths[j].room;
+            this.companies[i].floor = this.booths[j].floor;
+            
+            this.booths[j].compId = this.companies[i].id;
+            this.booths[j].id = "booth" + this.booths[j].bNum;
+            
+            //this.companies[i].booth = this.booths[j].id;
+            break;
+          }
+        }
+
+        
+
 
 /*
-// ----------------------------------------------------------
-// Linkedin info is more reputable
-// (e.g. organization type, name, industry)
-// but not all companies have a LinkedIn page
-//
-//
-        // Choose most reputable properties to display in details page
-        // template for company-details references these properties:
-        // linkedinID, empID
+https://www.myinterfase.com/mccormick_northwestern/contactregistration.aspx?emp_id=
+
+"empId":1586,
+"cso_organizationName":"Atomatic Mechanical Services",
+"cso_branch":null,
+"cso_industry":"Engineering",
+"cso_orgType":"Private",
+"cso_website":"http://www.atomatic.com",
+"cso_city":"Arlington Heights",
+"cso_state":"IL",
+"cso_zip":60004,
+"cso_country":"United States",
+"cso_profile":"For over 65 years Atomatic Mechanical Services has been dedicated to quality design installation and service of HVAC systems for the commercial institutional industrial and residential building markets throughout metropolitan Chicago. Our solid reputation is built on high standards innovative designs and exceptional customer service. We honor our word and commitments. Atomaticâ€™s ultimate goal is to continually meet the changing needs of our customers and exceed their expectations.",
+"cso_onlineapp":""
+
+
+        // ----------------------------------------------------------
+        //
+        //
+        
+        
+        // link the relevant information from the CSO mccormickconnect data
+        // to each company object
+        var k = 0;
+        for (k = 0; k < this.csoData.length; k++)
+        {
+          //csoData[k]["empId"] 
+          if(this.csoData[k].empId == this.companies[i].empId )
+          {
+              // Excluding these fields:
+              // organization name
+              // phone, fax, address1, address2, country
+              // facebook, twitter, linkedin
+
+              // name = organizationname
+              // this.companies[i].csoOrganizationName = this.csoData[k].cso_organizationName;
+              
+              this.companies[i].branch = this.csoData[k].cso_branch;
+              this.companies[i].industryCSO = this.csoData[k].cso_industry;
+              this.companies[i].websiteCSO = this.csoData[k].cso_website;
+
+              // Linkedin organization type is more reputable
+              // but not all companies have a LinkedIn page
+              this.companies[i].typeCSO = this.csoData[k].cso_orgType;
+              //this.companies[i]["type"] = this.csoData[k]["type"];
+                // csoOrgType cso_orgType 
+              
+              // I found errors in these 3 fields in McCormickConnect info
+              // (facebook / twitter / linkedin)
+              // also many companies do not fill them out
+              //
+              //this.companies[i].facebook = this.csoData[k].facebook;
+              //this.companies[i].twitter = this.csoData[k].twitter;
+              //this.companies[i].linkedin = this.csoData[k].linkedin;
+
+              // onlineApp is also rarely filled out, but will include anyway
+              this.companies[i].onlineApp = this.csoData[k].cso_onlineapp;
+
+
+              this.companies[i].city = this.csoData[k].cso_city;
+              this.companies[i].state = this.csoData[k].cso_state;
+              this.companies[i].zip = this.csoData[k].cso_zip;
+
+              // description --> csoProfile
+              this.companies[i].profileCSO = this.csoData[k].cso_profile;
+              
+              break;
+          } 
+        }
+
+        // link the relevant information from the linkedIn data
+        // to each company object
+        for (k = 0; k < this.linkedinData.length; k++)
+        {
+          
+          if(this.linkedinData[k].empId == this.companies[i].empId )
+          {
+
+            // name = companyName
+            this.companies[i].linkedinID = this.linkedinData[k].linkedinID;
+            this.companies[i].linkedinIndustry = this.linkedinData[k].industry;
+            this.companies[i].specialties = this.linkedinData[k].specialties;
+            this.companies[i]["size"] = this.linkedinData[k].companySize;
+            this.companies[i].companyType = this.linkedinData[k].type;
+            this.companies[i].founded = this.linkedinData[k].founded;
+
+            this.companies[i].hqCity = this.linkedinData[k].hqCity;
+            this.companies[i].hqState = this.linkedinData[k].hqState;
+            this.companies[i].hqZip = this.linkedinData[k].hqZip;
+            // description2-blurb
+            // blurb-->linkedinProfile...linkedinProfie... linkedinDescription
+            // descriptionLin
+            // description2 --> description
+            this.companies[i].description2 = this.linkedinData[k].blurb;
+            this.companies[i].companyWebsite = this.linkedinData[k].website;
+
+            // or ["Source Page URL"];
+            this.companies[i].linkedin = "http://www.linkedin.com/company/" + this.companies[i].linkedinID;
+           // type  founded  hqAddress  Source Page url  hqCountry  
+              break;
+          } 
+        }
+
+        // Choose most reputable properties to display
+        // template for company-details referneces these properties:
         // company. ...
         // name, starred, booth, room, (majors), (positions),
         // website
         // description, specialties, size,
-        // type
+        // type or companyType
         // city, state, zip
         // hqCity, hqState, hqZip
+
+        // facebook, twitter, linkedinID, empID
+
+        // blurbLinkedin.... profileL
+        // industryLinkedin profileLin descLin
 
         //company.description;
         //company.type;
@@ -389,37 +477,23 @@ lnkd_website*/
           this.companies[i].orgType = this.companies[i].typeLIN;
 
         //
-        // website (required CSO field)
+        // website
         //
         this.companies[i].website = this.companies[i].websiteCSO;
         //if(companies[i].profileLIN != null)
         //  this.companies[i].description = this.companies[i].profileLIN;
 
 
-// this.companies[i].companyWebsite = this.linkedinData[k].website;
-      }
-    */
 
- 
         
-        // link the relevant information
-        // from the CSO mccormickconnect data
-        // to each company object
 
-              // Excluding these fields:
-              // organization name
-              // phone, fax, address1, address2, country
-              // facebook, twitter, linkedin
-              
-              // I found errors in these 3 fields in McCormickConnect info
-              // (facebook / twitter / linkedin)
-              // also many companies do not fill them out
 
-              // onlineApp is also rarely filled out, but will include anyway
-              
+      }
+      
+      return this.companies;
+    },
 
-        // link the relevant information from the linkedIn data
-        // to each company object
+    */
 
 
 
