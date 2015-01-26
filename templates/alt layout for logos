@@ -1,0 +1,28 @@
+<!-- below format shows
+            itty bitty square logo in top left corner, 
+            booth number centered in middle,
+            and company id at bottom of booth, some of which are long and uggo -->
+      <!--
+      <image class="compLogo" 
+             x="2" y="2"
+             width="20" height="20"
+             ng-xlink-href="http://lizzb.github.io/iday/www/img/logos/{{b.compId}}/square.png" 
+             xlink:href=""/>
+
+          <text class="boothlabel boothId boothCompId"
+            x="{{ bWidth/2 }}"
+            y="{{ bHeight*3/4 }}">
+            {{b.compId}}        
+          </text>
+          <text class="boothlabel compId boothNumId"
+            ng-attr-x="{{bWidth/2 }}"
+            ng-attr-y="{{bHeight/2 }}">
+            {{b.bNum}}        
+          </text>
+        -->
+
+        <!--text class="boothlabel boothId boothCompId"
+            x="{{ bWidth/2 }}"
+            y="{{ bHeight*3/4 }}">
+            {{b.compId}}        
+          </text-->

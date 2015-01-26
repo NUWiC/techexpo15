@@ -159,6 +159,20 @@ app.service('CareerFairService', function($q) {
           }
         }
 
+/*
+{"empId":1551,
+"cso_organizationName":"3Red",
+"cso_branch":"",
+"cso_website":"http://3redgroup.com",
+"cso_industry":"Financial Services",
+"cso_orgType":"Private",
+"cso_city":"Chicago",
+"cso_state":"IL",
+"cso_zip":60605,
+"cso_country":"USA",
+"cso_profile":"3Red is a proprietary trading firm with offices in the Chicago Loop and New York City.",
+"cso_onlineapp":""},
+*/
     
         
         // link the relevant information from the CSO mccormickconnect data
@@ -170,28 +184,58 @@ app.service('CareerFairService', function($q) {
           if(this.csoData[k].empId == this.companies[i].empId )
           {
             // name = organizationname
-              this.companies[i].branch = this.csoData[k].cso_branch; // branch
+              this.companies[i].nameCSO = this.csoData[k].cso_organizationName; 
+
+              this.companies[i].websiteCSO = this.csoData[k].cso_website; //website;
+              // ...............
               this.companies[i].website = this.csoData[k].cso_website; //website;
+
+              this.companies[i].typeCSO =this.csoData[k].cso_orgType;
+              this.companies[i]["type"] =this.csoData[k].cso_orgType;
+
+              this.companies[i].industryCSO = this.csoData[k].cso_industry; 
+              this.companies[i].industry = this.csoData[k].cso_industry; //industry;
+
+              this.companies[i].majorsCSO = this.csoData[k].majors; // typical majors
+              
               
               // facebook // twitter // linkedin
               //this.companies[i].facebook = this.csoData[k].facebook;
               //this.companies[i].twitter = this.csoData[k].twitter;
               //this.companies[i].linkedin = this.csoData[k].linkedin;
+              
 
-              this.companies[i].industry = this.csoData[k].cso_industry; //industry;
-              this.companies[i]["type"] =this.csoData[k].cso_orgType;  //this.csoData[k]["type"]; 
+
+              this.companies[i].branch = this.csoData[k].cso_branch; // branch
+              //this.companies[i]["type"] =this.csoData[k].cso_orgType;  //this.csoData[k]["type"]; 
               // address1 // ,address2: // country
-              this.companies[i].city = this.csoData[k].cso_city; //city;
-              this.companies[i].state = this.csoData[k].cso_state;  //state;
-              this.companies[i].zip = this.csoData[k].cso_zip;  //zip;
+              this.companies[i].city = this.csoData[k].cso_city;
+              this.companies[i].state = this.csoData[k].cso_state;  
+              this.companies[i].zip = this.csoData[k].cso_zip;  
+              this.companies[i].country = this.csoData[k].cso_country;
               // phone  // fax
               // had to rename, description property belongs to the official SWE provided one
               this.companies[i].descriptionCSO = this.csoData[k].cso_profile;  //profile;
-              // onlineApp
+              this.companies[i].onlineApp = this.csoData[k].cso_onlineapp; // onlineApp
               break;
           } 
         }
 
+/*
+"linkedinID":"3red-trading",
+    "name_lnkd":"3Red Trading",
+    "industry_lnkd":"Financial Services",
+    "type_lnkd":"Privately Held",
+    "size_lnkd":"11-50 employees",
+    "founded_lnkd":"2011",
+    "website_lnkd":"http://www.3redgroup.com/",
+    "hqcity_lnkd":"Chicago",
+    "hqstate_lnkd":"IL",
+    "hqzip_lnkd":"60605",
+    "hqcountry_lnkd":"United States",
+    "specialties_lnkd":"",
+    "description_lnkd":"3
+    */
         // link the relevant information from the linkedIn data
         // to each company object
         for (k = 0; k < this.linkedinData.length; k++)
@@ -202,28 +246,89 @@ app.service('CareerFairService', function($q) {
           // use the linkedinID to find the linkedin info
           if(this.linkedinData[k].linkedinID == this.companies[i].linkedinID)
           {
+            this.companies[i].nameLNKD = this.linkedinData[k].name_lnkd;
             // name = companyName
             //this.companies[i].linkedinID = this.linkedinData[k].linkedinID;
-            this.companies[i].linkedinIndustry = this.linkedinData[k].industry;
-            this.companies[i].specialties = this.linkedinData[k].specialties;
-            this.companies[i]["size"] = this.linkedinData[k].companySize;
-            this.companies[i].companyType = this.linkedinData[k].type;
-            this.companies[i].founded = this.linkedinData[k].founded;
+            this.companies[i].industryLNKD = this.linkedinData[k].industry_lnkd;//industry;
+            this.companies[i].typeLNKD = this.linkedinData[k].type_lnkd;//type;
 
-            this.companies[i].hqCity = this.linkedinData[k].hqCity;
-            this.companies[i].hqState = this.linkedinData[k].hqState;
-            this.companies[i].hqZip = this.linkedinData[k].hqZip;
-            this.companies[i].description2 = this.linkedinData[k].blurb;
-            this.companies[i].companyWebsite = this.linkedinData[k].website;
+            this.companies[i].specialties = this.linkedinData[k].specialties_lnkd; //specialties;
+            this.companies[i]["size"] = this.linkedinData[k].size_lnkd; //companySize;
+            this.companies[i].founded = this.linkedinData[k].founded_lnkd; //founded;
 
+            this.companies[i].hqCity = this.linkedinData[k].hqcity_lnkd;
+            this.companies[i].hqState = this.linkedinData[k].hqstate_lnkd;
+            this.companies[i].hqZip = this.linkedinData[k].hqzip_lnkd;
+            this.companies[i].hqCountry = this.linkedinData[k].hqcountry_lnkd;
+            this.companies[i].descriptionLNKD = this.linkedinData[k].description_lnkd; //description2 blurb;
+            this.companies[i].websiteLNKD = this.linkedinData[k].website_lnkd; // companyWebsite website
+
+
+            this.companies[i].name = this.companies[i].nameLNKD;
+            this.companies[i].type = this.companies[i].typeLNKD;
+            this.companies[i].industry = this.companies[i].industryLNKD;
+            this.companies[i].description = this.companies[i].descriptionLNKD;
+            this.companies[i].website = this.companies[i].websiteLNKD;
             // or ["Source Page URL"];
-            this.companies[i].linkedin = "http://www.linkedin.com/company/" + this.companies[i].linkedinID;
+            //this.companies[i].linkedin = "http://www.linkedin.com/company/" + this.companies[i].linkedinID;
            /*  type  founded  hqAddress  Source Page url  hqCountry  */
               break;
           } 
         }
 
+/*
+FINAL PROPERTIES OF COMPANY AT END OF THIS FX
+company.*
+name
+type
+website
+description
+website
 
+nameCSO
+nameLNKD
+websiteCSO
+websiteLNKD
+industryCSO
+industryLNKD
+typeCSO
+typeLNKD
+descriptionCSO
+descriptionLNKD
+
+
+onlineApp
+
+name --> CSO AND LinkedIn
+industry --> CSO AND LinkedIn
+type --> CSO AND LinkedIn
+website --> CSO AND LinkedIn
+description --> CSO AND LinkedIn
+
+booth
+room
+floor
+
+industryLNKD
+industryCSO
+typeLNKD
+typeCSO
+websiteLNKD
+websiteCSO
+
+branch
+city
+state
+zip
+
+specialties
+size
+founded
+hqCity
+hqState
+hqZip
+hqCountry
+*/
         
 
 
