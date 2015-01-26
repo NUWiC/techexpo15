@@ -130,7 +130,9 @@ viewBox="{{startX}} {{startY}} {{mapWidth}} {{mapHeight}}">
       
 <g>
       <title> Booths </title>
+<!-- NEED TO DEAL WITH SOME BOOTHS BEING UNOCCUPIED -->
 
+<!-- g ng-click="go('/companies/{{b.compId}}')" -->
 <g ng-repeat="b in booths" ng-click="go('/companies/{{b.compId}}')"
 ng-attr-transform="translate({{b.x}}, {{b.y}}) rotate({{b.rotate}},0,0)">
 
@@ -142,15 +144,16 @@ ng-attr-transform="translate({{b.x}}, {{b.y}}) rotate({{b.rotate}},0,0)">
               ng-attr-id="{{b.compId}}"
               x="0" y="0"
               ng-attr-width="{{bWidth}}"
-              ng-attr-height="{{bHeight}}"/>
+              ng-attr-height="{{bHeight}}"
+              />
 
         <!-- new format, larger logo image -->
          <image class="compLogo" 
              x="0" y="0"
              ng-attr-width="{{bWidth}}" ng-attr-height="{{bHeight}}"
              xlink:href=""
-             ng-xlink-href="./img/logos/{{b.compId}}/square.png" />
-             />
+             ng-xlink-href="./img/logos/{{b.compId}}/square.png"/>
+             <!--ng-click="go('/companies/{{b.compId}}')"-->
         <!--image class="compLogo" 
              x="0" y="0"
              width="59" height="59"
