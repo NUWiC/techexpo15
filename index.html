@@ -61,6 +61,15 @@
         <ion-content padding="true">
           <p>Swipe to the right to reveal the left menu.</p>
           <p>(On desktop click and drag from left to right)</p>
+
+          <p>
+            On a small viewport (less than 768px window width), the left menu will be hidden, but can be shown by swiping left to right, or toggling the button in the top left of the header. On a large viewport (greater than or equal to 768px), the left menu will stay open.
+          </p>
+          <p>
+            Using <code>large</code> as the attribute's value is an alias to <code>(min-width:768px)</code> since it is the most common use-case. However, for added flexibility, any valid media query could be added as the value, such as <code>(min-width:600px)</code> or even multiple queries such as <code>(min-width:750px) and (max-width:1200px)</code>.
+          </p>
+
+          
         </ion-content>
       </ion-view>
     </script>

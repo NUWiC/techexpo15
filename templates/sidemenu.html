@@ -7,15 +7,15 @@
       </ion-nav-back-button>
     </ion-nav-bar>
     <ion-nav-buttons side="left">
-      <button class="button button-icon button-clear button-large ion-navicon" ng-click="toggleLeft()">
+      <button class="button button-icon button-clear button-large ion-navicon" ng-click="toggleLeft()" ng-hide="$exposeAside.active">
       </button>
     </ion-nav-buttons>
     <ion-nav-view animation="no-animation" name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
+  <ion-side-menu side="left" expose-aside-when="large">
     <ion-header-bar class="bar-positive">
-      <h1 class="title">SWE Industry Day 2014</h1>
+      <h1 class="title">NU TechExpo 2015</h1>
       <!-- Side/Left Menu Title-->
     </ion-header-bar>
     <ion-content>
@@ -26,11 +26,11 @@
         actually jk guess its not default
         -->
 
-        <!-- currently home page has no real purpose
+        <!-- currently home page has no real purpose -->
         <a href="#/home" class="item item-icon-left" menu-close>
           <i class="icon ion-home"></i>Home
         </a>
-        -->
+       
 
         <a href="#/companies" class="item item-icon-left" menu-close>
           <i class="icon ion-clipboard"></i>Company List
