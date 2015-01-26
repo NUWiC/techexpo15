@@ -1,0 +1,396 @@
+<!-- Floorplan Hilton Orrington-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-45359239-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<ion-view title="Company Booth Layout"> 
+
+<ion-scroll zooming="true" direction="xy" style="width: 100%; height: 100%; padding-top: 50px;">
+
+<svg xmlns="http://www.w3.org/2000/svg" 
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" 
+preserveAspectRatio="xMinYMin meet" 
+viewBox="{{startX}} {{startY}} {{mapWidth}} {{mapHeight}}">
+<style>
+.room-title, #northshore-title, #lakeshore-title {
+  stroke:#000000;
+  text-anchor:middle;
+  font-family: serif;
+  font-size: 24;
+  stroke-width:0;
+  fill:#000000;
+  stroke-linecap: null;
+  stroke-linejoin: null;
+  stroke-dasharray: null;
+}
+.tooltip { display:inline; opacity:0.85; fill: #fff; stroke: lime; stroke-width: 1;}
+
+.booth{fill: white;}
+</style>
+
+<g id="ballroom">
+<title> Hilton Orrington Grand Ballroom </title>
+  <text x="535"  y="-75" class="roomTitle"> Grand Ballroom </text>
+
+  <path class="room"  d="{{roomOutline}}" />
+  
+  <!--path class="roomOutline"  
+        d="
+        M 200,10
+        l 1040,0
+        l 0,900
+        l -855,0
+        l -72, -35
+        l -48, 100
+        l -135, -75
+        l 65, -105
+        l 0,-785
+        z" /-->
+    <text transform="translate(215, 850) rotate(30,0,0)" class="bNum" x="30" y="30"> Entrance </text>
+
+  <!-- not exactly sure what this square is, on map from tech expo was a yellow box -->
+   <g transform="translate(460, 660)">
+    <rect class="pillar" x="0" y="0" width="60" height="60"></rect>
+    <text class="bNum" x="30" y="30"> Pillar </text>
+  </g>
+</g><!--/#ballroom -->
+
+
+
+<!-- <g id="heritage" transform="translate(250, 1200)"... <text x="235"  y="-100" ....  M 0,0 -->
+
+<g id="heritage">
+  <title> Hilton Orrington Heritage Room </title>
+  <text x="485"  y="1100" class="roomTitle"> Heritage Room </text>
+  <!--path class="roomOutline"
+        d="
+        M 250,1200
+        l 865,0
+        l 0,595
+        l -140,0
+        l 0,25
+        l-120,0
+        l 0,-25
+        l -605, 0
+        z" /-->
+    <text transform="translate(885, 1775)" class="bNum" x="30" y="30"> Entrance </text>
+</g><!--/#heritage -->
+
+<!-- transform="translate(635, 575)" 635+250, 575+1200-->
+
+
+
+
+<!--g>
+
+    <g ng-click="go('/companies/{{b.compId}}')">
+    <!--g ng-repeat="b in booths | reverse"
+    ng-click="tooltipIsVisible = !tooltipIsVisible"-->
+
+      <!-- 
+      ng-mouseenter="tooltipIsVisible = true"
+             ng-mouseleave="tooltipIsVisible = false"
+             ng-click="dialogIsVisible = true">
+             -->
+
+    <!--g ng-attr-transform="translate({{b.x}}, {{b.y}})">
+
+
+<g id="{{b.compId}}-tooltip" class="st18 tooltip dialog" ng-show="tooltipIsVisible" ng-click="go('iday/companies/{{b.compId}}')">
+<!-- possibly apply ng class to display favorites diff color? -->
+<!--class="tooltip-bg" fill="#dff"-->
+        <!--path id="new-tooltip" fill="#fff"
+              d="
+              M -35, -75
+              L  90, -75
+              L  90,-10 
+              L  38,-10 
+              L  30,-3 
+              L  22,-10 
+              L -35,-10 Z"></path>       
+        <text x="-20" y="-27" class="tooltip-label"> Booth # {{b.bNum}} </text>
+        <text x="-20" y="-13" class="tooltip-label"> Click for details </text>
+        <image class="compLogo" 
+             x="-30" y="-70"
+             width="120" height="30"
+             ng-xlink-href="http://lizzb.github.io/iday/www/img/logos/{{b.compId}}/wide.png" 
+             xlink:href=""/>
+
+      </g>
+
+      -->
+
+  
+      
+<g>
+      <title> Booths </title>
+
+<g ng-repeat="b in booths" ng-click="go('/companies/{{b.compId}}')"
+ng-attr-transform="translate({{b.x}}, {{b.y}}) rotate({{b.rotate}},0,0)">
+
+
+    <!-- this still throws errors in console, but it does exactly what i want so... shrug .... see notes lower-->
+    <!--g ng-attr-transform="rotate({{b.rotate}},0,0)"-->
+
+        <rect class="booth"
+              ng-attr-id="{{b.compId}}"
+              x="0" y="0"
+              ng-attr-width="{{bWidth}}"
+              ng-attr-height="{{bHeight}}"/>
+
+        <!-- new format, larger logo image -->
+         <image class="compLogo" 
+             x="0" y="0"
+             ng-attr-width="{{bWidth}}" ng-attr-height="{{bHeight}}"
+             xlink:href=""
+             ng-xlink-href="./img/logos/{{b.compId}}/square.png" />
+             />
+        <!--image class="compLogo" 
+             x="0" y="0"
+             width="59" height="59"
+             ng-xlink-href="http://lizzb.github.io/iday/www/img/logos/{{b.compId}}/square.png" 
+             xlink:href="http://placehold.it/60x60"/-->
+
+          <!--
+          iday version 
+          <text class="boothlabel compId boothNumId"
+                ng-attr-transform="rotateLabel({{b.rotate}}, 0, 0)"
+                ng-attr-x="5"
+                ng-attr-y="{{bHeight + 10}}">
+            {{b.bNum}}        
+          </text-->
+
+
+          <text class="boothlabel compId boothNumId" 
+                ng-attr-x="{{bWidth + 15}}"
+                ng-attr-y="{{bHeight - 5}}">
+            {{b.bNum}}        
+          </text>
+          
+
+<!-- for lower left width-12 and height-8 looked good -->
+
+      </g><!--/ transform - rotate --> 
+    </g><!--/ transform - x y coordinates -->
+</g> <!--/ b in booths -->
+  
+</svg>
+
+<!--  ng-click="go('/companies/{{b.compId}}')" in rect doesnt work -->
+
+</ion-scroll>
+    </ion-view>
+
+
+
+
+
+
+<!--style>
+st0{fill:#FFFFFF;}
+  .st1{fill:none;stroke:#EFEFEF;stroke-width:2;stroke-miterlimit:10;}
+  .st2{fill:#EFEFEF;}
+  .st3{fill:none;stroke:#FFFFFF;stroke-width:4;stroke-miterlimit:10;}
+  .st4{enable-background:new    ;}
+  .st5{fill:#5CC4BE;}
+  .st6{fill:#9E9E9F;}
+  .st7{fill:#E0E0E0;}
+  .st8{fill:#BFBFBF;}
+  .st9{fill:#A7A9AC;}
+  .st10{fill:#C23E29;}
+  .st11{fill:#E54433;}
+  .st12{fill:#992E22;}
+  .st13{fill:none;}
+  .st14{fill:#5CC4BE;fill-opacity:0;}
+  .st15{fill:#6EE5DC;}
+  .st16{fill:#4A9993;}
+  .st17{fill:none;stroke:#EAEAEA;stroke-miterlimit:10;}
+  //.dialog, .tooltip, .st18{display:none;}
+  .st19{display:inline;opacity:0.85;}
+  .st20{display:inline;enable-background:new    ;}
+  .st21{display:inline;}
+  .st22{opacity:0.25;fill:#77787B;enable-background:new    ;}
+  .st23{fill:#606161;}
+  .st24{display:inline;fill:none;stroke:#DDDDDC;stroke-miterlimit:10;}
+  .st25{fill:#5CC3BD;}
+  .st26{display:inline;opacity:0.6;}
+  .st27{fill:#FEFEFE;}
+  .st28{fill:#CFCFCF;}
+  .st29{fill:#999999;}
+  .st30{fill:#BDBDBD;}
+  .st31{fill:#CCCCCC;}
+  .st32{fill:#B7B7B7;}
+  .st33{fill:#D7D7D7;}
+  .st34{fill:#9B9B9B;}
+  .st35{fill:#888888;}
+  .st36{fill:#C3C3C3;}
+  .st37{fill:#ABABAB;}
+  .st38{fill:#989898;}
+  .st39{fill:#8C8C8C;}
+  .st40{fill:#696969;}
+  .st41{fill:#A7A7A7;}
+  .st42{fill:#B8B8B8;}
+  .st43{fill:#B6B6B6;}
+  .st44{fill:#828282;}
+  .st45{fill:#B4B4B4;}
+  .st46{fill:#AFAFAF;}
+  .st47{fill:#A5A5A5;}
+  .st48{fill:#BEBEBE;}
+  .st49{fill:#8F8F8F;}
+  .st50{fill:#C1C1C1;}
+  .st51{fill:#ADADAD;}
+  .st52{fill:#CECECE;}
+  .st53{fill:#A9A9A9;}
+  .st54{fill:#7D7D7D;}
+  .st55{fill:#929292;}
+  .st56{fill:#787878;}
+  .st57{fill:#616161;}
+  .st58{fill:#9D9D9D;}
+  .st59{fill:#C5C5C5;}
+  .st60{fill:#B5B5B5;}
+  .st61{fill:#8E8E8E;}
+  .st62{fill:#C9C9C9;}
+  .st63{fill:#626262;}
+  .st64{fill:#A8A8A8;}
+  .st65{fill:#8B8B8B;}
+  .st66{fill:#858585;}
+  .st67{fill:#CBCBCB;}
+  .st68{fill:#555555;}
+  .st69{fill:#757575;}
+  .st70{fill:#656565;}
+  .st71{fill:#4E4E4E;}
+  .st72{fill:#BCBCBC;}
+  .st73{fill:#7C7C7C;}
+  .st74{fill:#919191;}
+  .st75{fill:#C0C0C0;}
+  .st76{fill:#646464;}
+  .st77{fill:#A0A0A0;}
+  .st78{fill:#767676;}
+  .st79{fill:#8D8D8D;}
+  .st80{fill:#575757;}
+  .st81{fill:#AAAAAA;}
+  .st82{fill:#9E9E9E;}
+  .st83{fill:#6F6F6F;}
+  .st84{fill:#3B3B3B;}
+  .st85{fill:#585858;}
+  .st86{fill:#4A4A4A;}
+  .st87{fill:#4C4C4C;}
+  .st88{fill:#868686;}
+  .st89{fill:#515151;}
+  .st90{fill:#969696;}
+  .st91{fill:#565656;}
+  .st92{fill:#A6A6A6;}
+  .st93{fill:#545454;}
+  .st94{fill:#303030;}
+  .st95{fill:#838383;}
+  .st96{fill:#A3A3A3;}
+  .st97{fill:#333333;}
+  .st98{fill:#242424;}
+
+  #row1, #closebutton {
+  cursor: pointer;
+}
+#closebutton {
+  opacity: .7;  
+}
+#closebutton:hover {
+  opacity: 1;  
+}
+#row1:hover #target {
+  transition: fill-opacity 250ms ease;
+  fill: #f9f9f9;
+  fill-opacity: 1;
+}
+
+.new-tooltip { display:inline; opacity:0.85; fill: #fff; stroke: lime;}
+.close-button {/*st25*/}
+.dialog-divider {/*st24*/}
+
+.tooltip-bg {display:inline;opacity:0.85;}
+
+.close-label {font-family: Verdana; font-size: 10pt; } /*st0 */
+
+.tooltip-label {font-family: arial; fill: hotpink; text-anchor: start;}
+
+.dialog-title {font-family: Verdana;font-weight: bold;} /*st25*/ 
+
+  </style>
+
+
+
+
+<label><input type="checkbox" ng-model="tooltipIsVisible"> tooltip is visible</label><br/>
+<label><input type="checkbox" ng-model="dialogIsVisible"> dialog is visible</label><br/>
+
+<svg version="1.1" id="mainview" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="587.5px" height="410px" viewBox="0 -17.5 587.5 410" style="enable-background:new 0 -17.5 587.5 410;" xml:space="preserve">
+
+<g id="row1" ng-mouseenter="tooltipIsVisible = true"
+             ng-mouseleave="tooltipIsVisible = false"
+             ng-click="dialogIsVisible = true">
+
+
+            <rect id="target" x="197" y="131" class="st14" width="339" height="72"></rect>
+            <rect id="greenbox" x="328.761" y="149.618" class="st5" width="81.439" height="34.664"></rect>
+            
+            <!--text x="518" y="167"class="st4">7</text>
+            <rect x="463" y="170.5" class="st7" width="62" height="6"></rect>
+            <rect x="463" y="170.5" class="st8" width="47" height="6"></rect>
+            <rect x="339" y="170.5" class="st15" width="62" height="6"></rect>
+            <rect x="339" y="170.5" class="st16" width="54" height="6"></rect>
+            <text x="395" y="165" class="st0" style="fill: white;">9</text-->      
+        <!--g id="borders" ng-hide="true">
+          <line class="st17" x1="48" y1="131" x2="536" y2="131"></line>
+          <line class="st17" x1="197" y1="203" x2="536" y2="203"></line>
+          <line class="st17" x1="197" y1="275" x2="536" y2="275"></line>
+        </g-->
+      <!--/g> 
+     
+
+
+      
+      <g id="tooltip" class="st18 tooltip" ng-show="tooltipIsVisible">
+        <path id="background"
+              class="tooltip-bg"
+              d="
+              M 303, 77
+              L 437, 77
+              L 437,135 
+              L 376.5,135 
+              L 370,143  
+              L 363.5,135 
+              L 303,135 Z"></path>       
+        <text x="318" y="110" class="tooltip-label"> Click for details </text>
+      </g>
+      
+
+      <g id="dialog" class="dialog st18" ng-show="dialogIsVisible">
+
+  <rect class="notst23" x="118" y="85" height="213" width="350" fill="white" stroke="lime" rx="5" ry="5"/>
+              
+        <text x="138" y="117" class="st25 dialog-title">Maracuja details</text>
+        
+        <line class="st24 dialog-divider" x1="118.883" y1="140.512" x2="467.833" y2="140.512"></line>
+
+        <g id="closebutton" class="st21" ng-click="dialogIsVisible = false">
+       <!--       
+          <!-- close button fill... removed enclosing g -->
+<!-- <rect  x="390" y="98" width="64.5" height="30" rx="4" ry="4" fill="black" class="st25 close-button"></rect>
+            <!--path class="st25" d="M454.5,124.5c0,2.209-1.791,4-4,4h-57c-2.209,0-4-1.791-4-4v-23c0-2.209,1.791-4,4-4h57
+        c2.209,0,4,1.791,4,4V124.5z"></path-->
+          
+         <!-- <text x="404" y="118" class="close-label st0">Close</text>
+        </g>
+-->
+
+
+        <!-- need to add an ng-if rotate property exists to avoid plethora of errors in console -->
+    <!-- apparently using ng if or ng switch inside ng repeat INSIDE svg is more complicated than i realized.... going to do easy/lame route of just assigning a rotate value to every booth 
+ng-attr-transform="rotateBooth({{b.rotate}});"> also tried rotate(rroratebooth(b.rotate), 0, 0)
+didn't try casting i guess
+    --><!-- ({{b.rotate}},0,0)-->
