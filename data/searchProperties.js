@@ -32,17 +32,70 @@ var majors_list = [
 {name:"AP",friendlyName:"Applied Physics (PhD)"}
 ];
 
-// mccormick connect / cso doesnt provide typical positions recruited
 var positions_list = [ 
-//{ friendlyName: 'All', name: ''} // hack
-  /*{ friendlyName: 'Full Time', name: 'fte'},
+  { friendlyName: 'Full Time', name: 'fte'},
   { friendlyName: 'Intern', name: 'intern' },
   { friendlyName: 'Co-Op', name: 'coop' },
-  { friendlyName: 'MS', name: 'ms'},
-  { friendlyName: 'PhD', name: 'phd'},
-  { friendlyName: 'International', name: 'intl'}*/
+  { friendlyName: 'Research', name: 'research' },
+  //{ friendlyName: 'MS', name: 'ms'},
+  //{ friendlyName: 'PhD', name: 'phd'},
+  //{ friendlyName: 'International', name: 'intl'}
 ];
 
+var edulevel_list = [ 
+  { friendlyName: 'Bachelors', name: 'bs'},
+  { friendlyName: 'BS/MS', name: 'bsms'},
+  { friendlyName: 'Masters', name: 'ms'},
+  { friendlyName: 'MBA', name: 'mba'},
+  { friendlyName: 'PhD', name: 'phd'},
+];
+
+var citizenship_list = [ 
+{ friendlyName: 'Accepts International', name: 'intl'}
+];
+
+/*
+AM
+BME
+CS
+CompE
+CivE
+ChemE
+Econ
+EE
+EnV
+IE
+MaDE
+MBP
+MEM
+MatSci
+MechE
+ISP
+MSR
+MSIT
+MSiA
+TAM
+MPD
+MSEDI
+MSIS
+MPM
+Phys
+
+Bachelors
+BS/MS
+Masters
+MBA
+PhD
+
+Full Time
+Intern
+Coop
+Research
+
+Accepts International
+*/
+
+/*
 // Industries list from McCormick Connect / CSO /MyInterfase
 var industries_list = [  
 "Accounting",
@@ -119,7 +172,7 @@ var industries_list = [
 "Veterinary",
 "Waste Management",
 ];
-
+*/
 
 /*
 var majors_list = [ 
