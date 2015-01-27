@@ -2,34 +2,34 @@
 // name = the csv/json-safe name for filtering etc
 
 var majors_list = [ 
-{name:"All",friendlyName:"All Majors"},
+//{name:"All",friendlyName:"All Majors"},
 {name:"AM",friendlyName:"Applied Mathematics"},
 {name:"BME",friendlyName:"Biomedical Engineering"},
-{name:"ChE",friendlyName:"Chemical Engineering"},
-{name:"CmpE",friendlyName:"Computer Engineering"},
 {name:"CS",friendlyName:"Computer Science"},
+{name:"CompE",friendlyName:"Computer Engineering"}, // CmpE
+{name:"CivE",friendlyName:"Civil Engineering "}, // CE
+{name:"ChemE",friendlyName:"Chemical Engineering"}, // ChE
 {name:"Econ",friendlyName:"Economics"},
 {name:"EE",friendlyName:"Electrical Engineering"},
-{name:"EnvE",friendlyName:"Environmental Engineering"},
+{name:"EnV",friendlyName:"Environmental Engineering"}, // EnvE
 {name:"IE",friendlyName:"Industrial Engineering"},
 {name:"MaDE",friendlyName:"Manufacturing and Design Engineering"},
 {name:"MBP",friendlyName:"Masters of Biotechnology Program"},
-{name:"ME",friendlyName:"Mechanical Engineering"},
 {name:"MEM",friendlyName:"Masters of Engineering Management"},
-{name:"MMM",friendlyName:"MSEDI + MBA"},
-{name:"MPDD",friendlyName:"Masters of Product Design and Development"},
-{name:"MPM",friendlyName:"Masters of Project Management"},
-{name:"MatSE",friendlyName:"Materials Science and Engineering"},
-{name:"MSEDI",friendlyName:"MS Engineering Design and Innovation"},
-{name:"MSIT",friendlyName:"MS Information Technology"},
-{name:"TAM",friendlyName:"Theoretical and Applied Mechanics"},
-{name:"UND",friendlyName:"Undecided"},
-{name:"CE",friendlyName:"Civil Engineering "},
+{name:"MatSci",friendlyName:"Materials Science and Engineering"}, // MatSE
+{name:"MechE",friendlyName:"Mechanical Engineering"}, //ME
 {name:"ISP",friendlyName:"Integrated Science Program"},
-{name:"MIES",friendlyName:"McCormick Integrated Engineering Studies"},
+{name:"MSR",friendlyName:"Master of Science in Robotics"},
+{name:"MSIT",friendlyName:"MS Information Technology"},
 {name:"MSiA",friendlyName:"MS in Analytics"},
-{name:"MSR",friendlyName:"Master of Science in Robotics "},
-{name:"AP",friendlyName:"Applied Physics (PhD)"}
+{name:"TAM",friendlyName:"Theoretical and Applied Mechanics"},
+//{name:"UND",friendlyName:"Undecided"},
+//{name:"MIES",friendlyName:"McCormick Integrated Engineering Studies"},
+//{name:"MMM",friendlyName:"MSEDI + MBA"},
+{name:"MPD",friendlyName:"Masters of Product Design and Development"}, // MPDD ... not sure on this one
+{name:"MSEDI",friendlyName:"MS Engineering Design and Innovation"},
+{name:"MPM",friendlyName:"Masters of Project Management"},
+{name:"Phys",friendlyName:"Applied Physics (PhD)"}, // AP
 ];
 
 var positions_list = [ 

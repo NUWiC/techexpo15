@@ -117,7 +117,7 @@ app.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, CareerFairSe
 
         var i = 0;
 
-        /*
+        
         // only show companies matching the users filter requirements
         for (i = 0; i < includedPositions.length; i++)
         {
@@ -133,7 +133,7 @@ app.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, CareerFairSe
                 }
             }
         }
-        */
+        /*
 
         // TEMPORARY HACK BECAUSE THERE ARE NO POSITIONS
         for (var j = 0; j < includedMajors.length; j++)
@@ -141,7 +141,7 @@ app.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, CareerFairSe
                     if(company[includedMajors[j]]) return company;
                 }
 
-
+      */
         return;
     }
 
