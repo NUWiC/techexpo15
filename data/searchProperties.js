@@ -42,7 +42,7 @@ var positions_list = [
   //{ friendlyName: 'International', name: 'intl'}
 ];
 
-var edulevel_list = [ 
+var edulevels_list = [ 
   { friendlyName: 'Bachelors', name: 'bs'},
   { friendlyName: 'BS/MS', name: 'bsms'},
   { friendlyName: 'Masters', name: 'ms'},
@@ -50,7 +50,7 @@ var edulevel_list = [
   { friendlyName: 'PhD', name: 'phd'},
 ];
 
-var citizenship_list = [ 
+var citizenships_list = [ 
 { friendlyName: 'Accepts International', name: 'intl'}
 ];
 
