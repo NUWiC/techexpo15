@@ -1,30 +1,188 @@
-app.service('CareerFairService', function($q) {
+// http://stackoverflow.com/questions/16933711/how-to-load-csv-file-to-object-in-angualrjs
+/*    myModule.factory('Items', ['$http', function($http){
+  var Url   = "src/utils/some.csv";
+  var Items = $http.get(Url).then(function(response){
+     return csvParser(response.data);
+  });
+  return Items;
+}]);
+*/
+
+
+// http://www.webdeveasy.com/angularjs-data-model/
+/* Use this function in order to get instances of all the books */
+/*        loadAllBooks: function() {
+            var deferred = $q.defer();
+            var scope = this;
+            $http.get('ourserver/books')
+                .success(function(booksArray) {
+                    var books = [];
+                    booksArray.forEach(function(bookData) {
+                        var book = scope._retrieveInstance(bookData.id, bookData);
+                        books.push(book);
+                    });
+
+                    deferred.resolve(books);
+                })
+                .error(function() {
+                    deferred.reject();
+                });
+            return deferred.promise;
+        },
+
+
+function AppController ($scope, $rootScope, $http) {
+$http.get('data/week9grid.json').success(function(data) {
+    $rootScope.all_companies = data;
+    console.log('data loaded');
+  });
+
+// http://stackoverflow.com/questions/16933711/how-to-load-csv-file-to-object-in-angualrjs
+    app.factory('Majors', ['$http', function($http){
+      var csvFilePath = "../data/csv/majors-list.csv";
+      var majors_list = $http.get(csvFilePath).then(function(response){
+     return csvParser(response.data);
+  });
+  return majors_list;
+}]);  
+
+// https://github.com/lizzb/399/blob/gh-pages/app/js/controllers.js
+*/
+/*
+
+// http://andru.co/building-a-simple-single-page-application-using-angularjs#json
+// We should only load the JSON file once, 
+// cache it to a variable 
+//and access the variable when we need the data. 
+// Let's use Angular's $http service to grab the JSON file. 
+// To use the $http service we will need to pass it as an argument to the AppController.
+function AppController ($scope, $rootScope, $http) {
+  // Load pages on startup
+  //$http.get('/pages.json').success(function (data) {
+  $http.get('data/week9grid.json').success(function(data) {
+    //$rootScope.pages = data;
+    $rootScope.all_companies = data;
+    console.log('data loaded');
+    $rootScope.filteredList = data; //filtered_companies = data;
+    // We are also passing in $rootScope which all scopes inherit from.
+    // We do this so this so that we can access the pages JSON data in our RouteController. 
+  });
+*/
+/* ****
+app.factory('Majors', ['$http', function($http){
+      var csvFilePath = "../data/csv/majors-list.csv";
+      var majors_list = $http.get(csvFilePath).then(function(response){
+     return csvParser(response.data);
+  });
+  return majors_list;
+}]);  
+
+*/
+
+/*
+$http.get('data/week9grid.json').success(function(data) {
+  // do something with data
+    $rootScope.all_companies = data;
+    console.log('data loaded');
+  });
+
+
+majors: function() {
+ // var csvFilePath = "../data/csv/majors-list.csv";
+  var dfd = $q.defer(); // var deferred = $q.defer();
+  $http.get("test-majors-list.csv").success(function(data) { //(itemsArray) {
+          var items = [];
+          data.forEach(function(itemData) {
+              var item = this._retrieveInstance(itemData.id, itemData);
+              items.push(item);
+          });
+
+          dfd.resolve(items); //deferred.resolve(items);
+      })
+     // .error(function() { dfd.reject(); });
+  return dfd.promise; //return deferred.promise;
+},
+*/
+/*
+// Notice that bookData is still a JSON object. 
+$http.get('ourserver/books/' + bookId).success(function(bookData) {
+        $scope.book = bookData;
+    });
+}]);
+
+*/
+      
+ 
+/*
+var csvFilePath = "../data/csv/majors-list.csv";
+var deferred = $q.defer();
+ $http.get(csvFilePath).success(function(data) {
+  dfd.resolve(data);
+          data.forEach(function(itemData) {
+              var item = this._retrieveInstance(itemData.id, itemData);
+              items.push(item);
+          });
+ }*/
+
+
+app.service('CareerFairService', ['$http','$q', function($http, $q) {
   
   return {
-    // Company grid contains:
-    // id - string - the company id used in urls, and for referencing the company
-    // name - string - the organization name to display
-    // starred - boolean - whether or not this company has been flagged/starred as a favorite
-    // booth - int - the unique booth number for this company
-    // industry
-    // description
-    // majors
-    // positions
-    // citizenship
-    //companies, //company_grid,
+
+
 
     // these variables come from separate js files in data folder
     companies: company_list, 
     booths: booth_info,
-    majors: majors_list,
+    //majors: majors_list,
     positions: positions_list,
     linkedinData: company_list_linkedinData,
     csoData: company_list_csoData,
-    
+
 
     // getBoothLayout
     getBooths: function() { return this.booths; },
-    getMajors: function() { return this.majors; },
+
+// var csvFilePath = "../data/csv/majors-list.csv";
+    getMajors: function() { 
+      //console.log(this.majors);
+      //return this.majors; 
+      var csvArray = [];
+      var majors_list = [];
+      //console.log(majors_list);
+      // http://techslides.com/convert-csv-to-json-in-javascript
+      $http.get('js/test-majors-list.csv').success(function(data)
+      {
+        //console.log("data:", data);
+        
+        //console.log('majors csv loaded');
+        
+        csvArray = CSVToArray(data);
+        console.log("csvArray", csvArray);
+
+        //console.log("majors list array: ", csvArray);
+        var headers = csvArray[0];
+        //var header1 = majors_list[0][0];
+        //var header2 = majors_list[0][1];
+
+        for(var i=1;i<csvArray.length;i++){
+          var obj = {};
+          //var currentline=lines[i].split(",");
+          for(var j=0;j<headers.length;j++){
+            obj[headers[j]] = csvArray[i][j];
+          }
+        majors_list.push(obj);
+        //console.log(obj);
+      }
+      console.log(JSON.stringify(majors_list));
+      console.log(majors_list);
+        //return JSON.stringify(majors_list);
+        return majors_list;
+      });
+    },
+
+
+
     getPositions: function() { return this.positions; },
     
     getBooth: function(boothNumber) {
@@ -169,6 +327,7 @@ app.service('CareerFairService', function($q) {
         var k = 0;
         for (k = 0; k < this.csoData.length; k++)
         {
+          //  CHECK FOR CAPS OF EMPID PROPS
           //csoData[k]["empId"] 
           if(this.csoData[k].empId == this.companies[i].empId )
           {
@@ -364,7 +523,29 @@ hqCountry
       //return dfd.promise;
     }
   }
-})
+}]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //  this.companies.forEach(function(company) {
     //    for (var i = 0; i < this.booths.length; i++) {
@@ -551,3 +732,17 @@ hqCountry
 
 //branch,website,facebook:,twitter:,linkedin:"",industry:,type:,address1:address2:,city:"St. Paul",state:"MN",zip:,Country:,phone:,fax:,profile==description,onlineApp:""},
 */
+
+
+
+    // Company grid contains:
+    // id - string - the company id used in urls, and for referencing the company
+    // name - string - the organization name to display
+    // starred - boolean - whether or not this company has been flagged/starred as a favorite
+    // booth - int - the unique booth number for this company
+    // industry
+    // description
+    // majors
+    // positions
+    // citizenship
+    //companies, //company_grid,
