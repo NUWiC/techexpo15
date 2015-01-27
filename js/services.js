@@ -134,23 +134,25 @@ app.service('CareerFairService', ['$http','$q', function($http, $q) {
     // these variables come from separate js files in data folder
     companies: company_list, 
     booths: booth_info,
-    //majors: majors_list,
+    majors: majors_list,
     positions: positions_list,
     linkedinData: company_list_linkedinData,
     csoData: company_list_csoData,
 
+    getMajors: function() { return this.majors; },
 
     // getBoothLayout
     getBooths: function() { return this.booths; },
 
 // var csvFilePath = "../data/csv/majors-list.csv";
+/*
     getMajors: function() { 
       //console.log(this.majors);
       //return this.majors; 
       var csvArray = [];
       var majors_list = [];
       //console.log(majors_list);
-      // http://techslides.com/convert-csv-to-json-in-javascript
+      
       $http.get('js/test-majors-list.csv').success(function(data)
       {
         //console.log("data:", data);
@@ -159,7 +161,7 @@ app.service('CareerFairService', ['$http','$q', function($http, $q) {
         
         csvArray = CSVToArray(data);
         console.log("csvArray", csvArray);
-
+// http://techslides.com/convert-csv-to-json-in-javascript
         //console.log("majors list array: ", csvArray);
         var headers = csvArray[0];
         //var header1 = majors_list[0][0];
@@ -180,7 +182,7 @@ app.service('CareerFairService', ['$http','$q', function($http, $q) {
         return majors_list;
       });
     },
-
+*/
 
 
     getPositions: function() { return this.positions; },
