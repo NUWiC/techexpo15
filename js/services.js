@@ -331,7 +331,7 @@ app.service('CareerFairService', ['$http','$q', function($http, $q) {
         {
           //  CHECK FOR CAPS OF EMPID PROPS
           //csoData[k]["empId"] 
-          if(this.csoData[k].empId == this.companies[i].empId )
+          if(this.csoData[k].empID == this.companies[i].empID )
           {
             // name = organizationname
               this.companies[i].nameCSO = this.csoData[k].cso_organizationName; 
@@ -414,11 +414,20 @@ app.service('CareerFairService', ['$http','$q', function($http, $q) {
             this.companies[i].websiteLNKD = this.linkedinData[k].website_lnkd; // companyWebsite website
 
 
-            this.companies[i].name = this.companies[i].nameLNKD;
+           
+            //this.companies[i].industry = this.companies[i].industryCSO;
+            if (this.companies[i].industry == "")
+              this.companies[i].industry = this.companies[i].industryLNKD;
+
+
+            //this.companies[i].name = this.companies[i].nameLNKD;
             this.companies[i].type = this.companies[i].typeLNKD;
-            this.companies[i].industry = this.companies[i].industryLNKD;
-            this.companies[i].description = this.companies[i].descriptionLNKD;
+            //this.companies[i].industry = this.companies[i].industryLNKD;
+            //this.companies[i].description = this.companies[i].descriptionLNKD;
             this.companies[i].website = this.companies[i].websiteLNKD;
+
+
+            
             // or ["Source Page URL"];
             //this.companies[i].linkedin = "http://www.linkedin.com/company/" + this.companies[i].linkedinID;
            /*  type  founded  hqAddress  Source Page url  hqCountry  */
