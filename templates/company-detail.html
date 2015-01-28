@@ -1,0 +1,201 @@
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-45359239-4', 'auto');
+ga('send', 'pageview');
+</script>
+
+<style>
+/* http://www.northwestern.edu/univ-relations/our-services/identity-system/index.html*/
+.nupurp {
+  color: #4e015c;
+}
+.wide-logo {
+    max-height: 200px;
+    max-width: 760px;
+    /* need better values */
+    
+    margin: auto;
+}
+.linkedinblue {
+    color: #4875B4;
+}
+.matchesReqs {
+    font-weight: bold;
+}
+.strikeout {
+    text-decoration: line-through;
+}
+.website-label {
+    font-size: smaller;
+    font-weight: normal;
+}
+.short {
+    font-size: 12px;
+    line-height: 12px;
+
+    font-weight: bold;
+    height: 30px;
+    background: white;
+    font: #666;
+}
+
+.grey {
+  color: #666;
+}
+/*
+.website-external {
+  display: block;
+min-width: 10px;
+text-align: center;
+font-size: 10px;
+}*/
+</style>
+
+
+<ion-view title="{{company.name}}" left-buttons="leftButtons">
+<ion-content>
+
+    <img class="full-image item wide-logo" ng-src="./img/logos/{{company.id}}/wide.png" />
+
+    <ion-toggle class="item item-icon-left" ng-model="company.starred" toggle-class="toggle-royal">
+        <i class="icon royal" ng-class="company.starred ? 'ion-ios7-star':'ion-ios7-star-outline'"></i>
+        <span>{{company.name}}</span>
+    </ion-toggle>
+
+    <div ng-show="{{company.branch}}" class="item item-icon-left item-info">
+        <i class="royal icon ion-network"></i>Branch: {{company.branch}}
+    </div>
+
+    <a class="item item-icon-right positive" href="#/map">
+        <i class="icon ion-navigate"></i> Booth # {{company.booth}}: {{company.room}} (Floor {{company.floor}})
+    </a>
+
+
+    <!-- would like to bold and put in green your major you selected from filter -->
+    <!--span ng-repeat="m in majors" ng-class="c[m.name] ? 'matchesReqs balanced' : 'strikeout'">{{m.friendlyName}}<br></span-->
+
+
+
+    <div class="item item-divider item-info">Positions</div>
+    <p class="padding">
+        <span ng-repeat="p in positions" ng-class="company[p.name] ? '' : 'assertive nope'">
+            {{company[p.name] | checkmark }} {{p.friendlyName}}
+            &nbsp;&nbsp;
+            <!--br-->
+        </span>
+    </p>
+
+
+
+    <div class="item item-divider item-info">Majors</div>
+    <div class="padding">
+        <li ng-repeat="m in majors" ng-show="company[m.name]">{{m.friendlyName}}</li>
+    </div>
+    <br>
+
+<!-- ............ABOUT ............ -->
+
+<div class="item item-divider item-icon-right">
+    About {{company.name}}
+    <span class="item-note website-label">Website</span>
+    <a class="" href="{{company.websiteCSO}}">
+    <i class="positive icon ion-share website-external"></i>
+    </a>
+</div>
+
+
+<div class="item item-icon-left item-divider short item-info">
+<i class="icon ion-briefcase"></i>{{company.industry}}
+</div>
+
+<!--p ng-show="{{company.specialties}}" class=" padding item item-icon-left item-info">
+        {{company.specialties}}
+    </div-->
+<p ng-show="{{company.specialties}}" class="padding grey">
+<!--i class="icon icon-left ion-ribbon-b"></i-->
+    {{company.specialties}}</p>
+
+<div class="item item-icon-left item-divider short item-info">
+<i class="icon ion-ios7-information-outline"></i>{{company.type}}
+</div>
+
+
+
+
+<div ng-show="{{company.size}}" class="item item-icon-left item-info item-divider short">
+    <i class="icon ion-person-stalker"></i> {{company.size}}
+</div>
+
+
+<div ng-show="{{company.city}}" class="item item-icon-left item-divider short item-info">
+      <i class="icon ion-ios7-location"></i> {{company.city}}, {{company.state}}&nbsp; {{company.zip}}
+  </div>
+
+<!-- ng-show="{{company.hqCity}}" -->
+<div ng-show="{{company.hqZip}}" class="item item-icon-left item-divider short item-info">
+    <i class="icon ion-pin"></i>
+    <strong>HQ:</strong> {{company.hqCity}} {{company.hqState}}&nbsp; {{company.hqZip}} {{company.hqCountry}}
+</div>
+
+
+
+    <!-- ++++++++++ COMPANY NAME ++++++++++ -->
+
+    <!-- ++++++++++ COMPANY WEBSITE ++++++++++ -->
+
+
+    <!-- ++++++++++ COMPANY INDUSTRY ++++++++++ -->
+
+
+
+
+
+    <!-- ++++++++++ COMPANY TYPE ++++++++++ -->
+   
+
+
+
+
+
+
+
+        <!-- ++++++++++ COMPANY LOCATION ++++++++++ -->
+
+       
+
+
+
+
+        <!-- ++++++++++ COMPANY DESCRIPTION ++++++++++ -->
+
+
+        
+
+        <p ng-show="{{company.descriptionCSO}}" class="padding">{{company.descriptionCSO}}</p>
+
+
+        <a class="item item-divider item-icon-left item-icon-right " href="http://www.linkedin.com/company/{{company.linkedinID}}" target="_blank"><i class="icon linkedinblue ion-social-linkedin"></i>LinkedIn<span class="item-note"><i class="icon linkedinblue ion-share"></i></span></a>
+        <!-- ng-show="{{company.linkedinID}}" -->
+
+
+
+
+
+        <div>
+            <br>
+        </div>
+
+
+    </ion-content>
+</ion-view>
