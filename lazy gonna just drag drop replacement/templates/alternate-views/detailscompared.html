@@ -1,0 +1,286 @@
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45359239-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<style>
+.wide-logo {
+  max-height: 200px;
+  max-width: 760px; /* need better values */
+  margin: auto;
+}
+
+.linkedinblue {
+  color: #4875B4;
+}
+</style>
+
+<ion-view title="{{company.name}}" left-buttons="leftButtons">
+    <ion-content>
+
+        <img class="full-image item wide-logo" ng-src="./img/logos/{{company.id}}/wide.png" />
+
+        <ion-toggle class="item item-icon-left" ng-model="company.starred" toggle-class="toggle-royal">
+            <i class="icon royal" ng-class="company.starred ? 'ion-ios7-star':'ion-ios7-star-outline'"></i>
+            <span>{{company.name}}</span>
+        </ion-toggle>
+
+        <a class="item item-icon-right positive" href="#/map">
+            <i class="icon ion-navigate"></i> Booth # {{company.booth}}: {{company.room}} (Floor {{company.floor}})
+        </a>
+
+        <div class="item item-divider">Majors</div>
+        <div class="padding">
+            <li ng-repeat="m in majors" ng-show="company[m.name]">{{m.friendlyName}}</li>
+        </div>
+        <br>
+
+        <div class="item item-divider">Positions</div>
+        <p class="padding">
+            <span ng-repeat="p in positions" ng-class="company[p.name] ? '' : 'assertive nope'">
+                {{company[p.name] | checkmark }} {{p.friendlyName}}
+                <!-- &nbsp;&nbsp;  -->
+                <br>
+            </span>
+
+        </p>
+
+
+    <div class="item item-divider item-icon-right royal">[CSO] McCormick Connect <span class="item-note">(empId: {{company.empId}})</span>
+            <a href="https://www.myinterfase.com/mccormick_northwestern/contactregistration.aspx?emp_id={{company.empId}}" target="_blank"><i class="icon royal ion-share"></i> </a>
+        </div>
+
+<!-- ng-show="{{company.linkedinID}}"  -->
+  <a class="item item-divider item-icon-left linkedinblue" href="http://www.linkedin.com/company/{{company.linkedinID}}" target="_blank">
+            <i class="icon ion-social-linkedin linkedinblue"></i> Linkedin
+        </a>
+
+  <a class="positive item item-divider item-icon-right" href="http://www.linkedin.com/company/{{company.linkedinID}}" target="_blank"><i class="icon linkedinblue ion-social-linkedin"></i>LinkedIn <span class="item-note">(linkedinID: {{company.linkedinID}})</span></a>
+
+
+<!-- item-info mutes the color from black to grey looks nicer -->
+
+
+    <!-- ++++++++++ COMPANY NAME ++++++++++ -->
+    <div class="item item-icon-left item-info">
+      <i class="royal icon ion-folder"></i>{{company.nameCSO}}
+    </div>
+
+    <div ng-show="{{company.branch}}" class="item item-icon-left item-info">
+      <i class="royal icon ion-network"></i>Branch: {{company.branch}}
+    </div>
+
+    <div class="item item-icon-left item-info">
+      <i class="linkedinblue icon ion-folder"></i>{{company.nameLNKD}}
+    </div>
+
+    <!-- ++++++++++ COMPANY WEBSITE ++++++++++ -->
+
+    <div class="item item-icon-left item-info">
+      <i class="royal icon ion-link"></i>{{company.websiteCSO}}
+    </div>
+
+    <div class="item item-icon-left item-info">
+      <i class="linkedinblue icon ion-link"></i>{{company.websiteLNKD}}
+    </div>
+
+    <!-- ++++++++++ COMPANY INDUSTRY ++++++++++ -->
+
+    <div class="item item-icon-left item-info">
+      <i class="royal icon ion-briefcase"></i>Industry: {{company.industryCSO}}
+    </div>
+
+     <div class="item item-icon-left item-info">
+      <i class="linkedinblue icon ion-briefcase"></i>Industry: {{company.industryLNKD}}
+    </div>
+
+<!--div class="item"-->
+    <p class="padding linkedinblue"><!-- style="color: #666;" -->
+    {{company.specialties}}
+    </p>
+    <!--/div-->
+
+        <div ng-show="{{company.size}}" class="item item-icon-left item-info">
+            <i class="linkedinblue icon ion-person-stalker "></i> {{company.size}}
+        </div>
+
+<!--
+        <div ng-show="{{company.founded}}" class="item item-icon-left item-info">
+            <i class="icon ion-person-stalker "></i> {{company.founded}}
+        </div>
+-->
+
+
+    <!-- ++++++++++ COMPANY TYPE ++++++++++ -->
+
+    <div class="item item-icon-left item-info">
+      <i class="royal icon ion-ios7-information"></i>Type: {{company.typeCSO}}
+    </div>
+
+    <div class="item item-icon-left item-info">
+      <i class="linkedinblue icon ion-ios7-information"></i>Type: {{company.typeLNKD}}
+    </div>
+
+
+
+
+
+
+    <!-- ++++++++++ COMPANY LOCATION ++++++++++ -->    
+
+    <div class="item item-icon-left item-info">
+      <i class="royal icon ion-ios7-location"></i> {{company.city}}, {{company.state}}&nbsp; {{company.zip}}
+    </div>
+
+    <div class="item item-icon-left item-info"><!-- ng-show="{{company.hqCity}}" -->
+      <i class="linkedinblue icon ion-pin"></i>HQ: {{company.hqCity}} {{company.hqState}}&nbsp; {{company.hqZip}} {{company.hqCountry}}
+    </div>
+
+
+
+
+    <!-- ++++++++++ COMPANY DESCRIPTION ++++++++++ -->
+
+    <div class="royal item item-divider item-icon-left"><i class="royal icon ion-document-text"></i> Profile</div>
+    <p class="padding">{{company.descriptionCSO}}</p>
+
+     <div class="linkedinblue item item-divider item-icon-left"><i class="positive icon ion-document-text"></i> Profile</div>
+    <p class="padding">{{company.descriptionLNKD}}</p>
+    
+
+
+
+
+
+
+  
+
+
+    
+
+    
+
+
+<!--
+
+
+        <div class="item item-divider">Description</div>
+        <p class="padding">{{company.description}}</p>
+
+        <div class="item item-divider item-icon-right">About {{company.name}}
+            <a href="{{company.website}}" target="_blank"><i class="icon positive ion-share"></i> </a>
+        </div>
+
+-->
+
+
+        <!--
+<div class="item item-divider assertive item-icon-right ">About {{company.name}}
+<a class="" href="{{company.website}}" target="_blank"><i class="icon ion-link"></i></a>
+<span class="note"><i class="ion-share button-large"></i>
+    </span>
+</div>
+-->
+
+
+
+        <!-- Mandatory McCormick Connect Field -->
+        <!--
+        <div class="item item-icon-left item-info">
+            <i class="icon ion-briefcase"></i> {{company.industry}}
+        </div>
+        -->
+
+        <!--
+<div class="item item-icon-left">
+    <i class="icon ion-briefcase"></i>
+    {{company.linkedinIndustry}}
+</div>
+
+<p class="padding" style="color: #666;">
+    {{company.specialties}}
+</p>
+-->
+
+
+        <!-- Mandatory McCormick Connect Field -->
+        <!--
+        <div class="item item-icon-left item-info">
+            <i class="icon ion-ios7-information"></i> {{company.type}}
+            <!--&nbsp;&nbsp;&nbsp;(LinkedIn: {{company.companyType}})--
+        </div> -->
+
+<!--
+        <div class="item item-icon-left item-info">
+            <i class="icon ion-ios7-location"></i> {{company.city}}, {{company.state}}&nbsp; {{company.zip}}
+        </div>
+
+        -->
+
+        
+
+        <!-- Mandatory McCormick Connect Field -->
+        <!--div class="item item-divider item-icon-left">
+    <i class="icon ion-link"></i>
+    <a class="company-website" href="{{company.website}}" target="_blank">Website</a>
+    <span class="note"><i class="ion-share button-large"></i>
+    </span>
+</div-->
+
+
+        <!--a ng-show="{{company.facebook}}" class="item item-divider item-icon-left" href="{{company.facebook}}" target="_blank">
+    <i class="icon ion-social-facebook"></i>Facebook
+</a>
+<a ng-show="{{company.twitter}}" class="item item-divider item-icon-left" href="{{company.twitter}}" target="_blank">
+    <i class="icon ion-social-twitter"></i>Twitter
+</a-->
+
+        
+        <div>
+            <br>
+        </div>
+
+
+            </ion-content>
+</ion-view>
+
+
+        <!-- linkedinIDNum and linkedinID is friendly name -->
+
+        <!--div class="item item-divider">
+    <a class="clear" href="https://www.myinterfase.com/mccormick_northwestern/contactregistration.aspx?emp_id={{company.empId}}" target="_blank">
+        <strong>McCormick</strong>
+        <em>Connect</em>Employer Info</a>
+</div-->
+
+
+
+
+
+        <!-- formatting for mccormick connect seems to be overridden, particularly italic -->
+
+        <!--a href="{{company.facebook}}" target="_blank">
+  <i class="icon ion-social-facebook-outline" style="font-size:32px;"></i>
+  </a-->
+        <!--div class="button-bar">
+  
+  <a class="button button-positive icon ion-social-facebook" href="{{company.facebook}}" target="_blank">
+  <a class="button button-calm icon ion-social-twitter" href="{{company.twitter}}" target="_blank">
+  <a class="button button-dark icon ion-social-linkedin" href="{{company.linkedin}}" target="_blank">
+</a>
+</div-->
+<!--
+        <div class="item item-divider"> Company JSON </div>
+<p>
+{{company | json}}
+</p>
+-->
+
+
+

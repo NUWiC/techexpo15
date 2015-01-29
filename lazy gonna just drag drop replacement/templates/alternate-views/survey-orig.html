@@ -1,0 +1,198 @@
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-45359239-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<ion-view title="Feedback Survey" left-buttons="leftButtons">
+
+<ion-content>
+
+<h1> Industry Day 2014 Student Survey </h1>
+
+<form class="list" ng-show="showForm">
+
+<div class="item item-divider"> Attendee Info </div>
+
+<!--label class="item item-input">
+  <input type="text" placeholder="First Name" ng-model="attendee.firstname">
+</label>
+<label class="item item-input">
+  <input type="text" placeholder="Last Name" ng-model="attendee.lastname">
+</label-->
+
+<!--div class="item item-divider"> Shirt Size </div>
+<ion-radio ng-repeat="m in survey_majors"
+           ng-value="m.value"
+           ng-model="attendee.major">
+  {{ m.text }}
+</ion-radio-->
+
+<label class="item item-input item-select">
+<div class="input-label"> Major </div>
+    <select>
+      <option>Undecided</option>
+      <option>Applied Math</option>
+      <option>Biomedical Engineering</option>
+      <option>Chemical Engineering</option>
+      <option>Civil Engineering</option>
+      <option>Computer Engineering</option>
+      <option>Computer Science (McCormick)</option>
+      <option>Computer Science (Weinberg)</option>
+      <option>Electrical Engineering</option>
+      <option>Environmental Engineering</option>
+      <option>Industrial Engineering</option>
+      <option>MaDE</option>
+      <option>Material Science &amp; Engineering</option>
+      <option>Mechanical Engineering</option>
+      <option>Non-Engineering</option>
+      <option selected>Not Specified</option>
+      <!--
+      <option>Economics</option>
+      <option>ISP</option>
+      <option>MMM</option>
+      <option>MSIT</option>
+      <option>MPDD</option>
+      <option>MSIA</option>
+      -->
+    </select>
+</label>
+
+<label class="item item-input item-select">
+    <div class="input-label"> Class </div>
+    <select>
+      <option>Freshman</option>
+      <option>Sophomore</option>
+      <option>Junior</option>
+      <option>Senior</option>
+      <option>Fifth Year</option>
+      <option>Master's</option>
+      <option selected>Not Specified</option>
+    </select>
+</label>
+
+<label class="item item-input item-select">
+    <div class="input-label"> Position you are interested in: </div>
+    <select>
+      <option>Permanent/Full-Time</option>
+      <option>Internship</option>
+      <option>Co-op</option>
+      <option selected>Not Specified</option>
+    </select>
+</label>
+
+
+<div class="item item-divider">
+How did you prepare for Industry Day?<br>(check all that apply)
+</div>
+<!--p class="padding"-->
+<ion-checkbox>Brought Resume</ion-checkbox>
+<ion-checkbox>Researched Companies</ion-checkbox>
+<ion-checkbox>Used Web App</ion-checkbox>
+<ion-checkbox>Used SWE Website</ion-checkbox>
+<ion-checkbox>Asked peers for advice</ion-checkbox>
+<ion-checkbox>Other:</ion-checkbox>
+<!--/p-->
+
+
+
+
+
+
+
+
+
+<div class="item item-divider">
+How did you find out about Industry Day?<br>(check all that apply)
+</div>
+
+
+<!--p class="padding"-->
+<ion-checkbox> SWE Member </ion-checkbox>
+<ion-checkbox> SWE Website </ion-checkbox>
+<ion-checkbox> Advertisement around campus </ion-checkbox>
+<ion-checkbox> Facebook event </ion-checkbox>
+<ion-checkbox> Facebook group/listserv blast </ion-checkbox>
+<ion-checkbox> Word of mouth </ion-checkbox>
+<ion-checkbox> Other: </ion-checkbox>
+
+<!--/p-->
+
+
+<div class="item item-divider"> Event Logistics </div>
+
+<!-- 
+convenientDate.checked
+convenientTime.checked
+convenientLocation.checked
+-->
+<ion-checkbox ng-model="convenientDate"
+              ng-true-value="Yes"
+              ng-false-value="No">
+    Was the date convenient for you?
+    <span class="item-note positive">{{convenientDate}}</span>
+</ion-checkbox>
+
+
+<ion-checkbox ng-model="convenientTime"
+              ng-true-value="Yes"
+              ng-false-value="No">
+    Was the time convenient for you?
+    <span class="item-note positive">{{convenientTime}}</span>
+</ion-checkbox>
+
+<ion-checkbox ng-model="convenientLocation"
+              ng-true-value="Yes"
+              ng-false-value="No">
+    Was the location convenient for you?
+  <span class="item-note positive">{{convenientLocation}}</span>
+</ion-checkbox>
+
+
+
+
+<div class="item item-divider">
+Number of companies with whom you spoke:
+
+<p class="padding">
+<ion-radio>1-5</ion-radio>
+<ion-radio>6-10</ion-radio>
+<ion-radio>11-20</ion-radio>
+<ion-radio>21+</ion-radio>
+</p>
+</div>
+
+<ion-item>
+<p class="padding">Please comment on your overall opinion of Industry Day and list possible areas of improvement.</p>
+</ion-item>
+
+
+<div class="padding">
+<button class="button button-block" ng-click="submit()">Checkin</button>
+</div>
+
+
+</form>
+
+<div ng-hide="showForm">
+<pre ng-bind="attendee | json"></pre> 
+<a href="#/event/attendees">View attendees</a>
+<p class="padding">
+Thank you for attending Industry Day, and best of luck! - The Society of Women of Engineers</p>
+</div>
+
+
+</ion-content>
+</ion-view>
+
+
+
+<!--ion-toggle ng-model="attendee.vegetarian"> Vegetarian </ion-toggle-->
+
+<!--<ion-checkbox ng-model="isChecked">Checkbox Label</ion-checkbox> -->
+
+
+

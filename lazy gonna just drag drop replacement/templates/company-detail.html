@@ -109,13 +109,13 @@ font-size: 10px;
 <div class="item item-divider item-icon-right">
     About {{company.name}}
     <span class="item-note website-label">Website</span>
-    <a class="" href="{{company.website}}" target="_blank">
+    <a class="" href="{{company.websiteCSO}}">
     <i class="positive icon ion-share website-external"></i>
     </a>
 </div>
 
 
-<div ng-show="{{company.industry}}" class="item item-icon-left item-divider short item-info">
+<div class="item item-icon-left item-divider short item-info">
 <i class="icon ion-briefcase"></i>{{company.industry}}
 </div>
 
@@ -126,7 +126,7 @@ font-size: 10px;
 <!--i class="icon icon-left ion-ribbon-b"></i-->
     {{company.specialties}}</p>
 
-<div ng-show="{{company.type}}" class="item item-icon-left item-divider short item-info">
+<div class="item item-icon-left item-divider short item-info">
 <i class="icon ion-ios7-information-outline"></i>{{company.type}}
 </div>
 
@@ -148,11 +148,6 @@ font-size: 10px;
     <strong>HQ:</strong> {{company.hqCity}} {{company.hqState}}&nbsp; {{company.hqZip}} {{company.hqCountry}}
 </div>
 
-
-<p ng-show="{{company.description}}" class="padding">{{company.description}}</p>
-
-
-        <a ng-show="{{company.linkedinID}}" class="item item-divider item-icon-left item-icon-right " href="http://www.linkedin.com/company/{{company.linkedinID}}" target="_blank"><i class="icon linkedinblue ion-social-linkedin"></i>LinkedIn<span class="item-note"><i class="icon linkedinblue ion-share"></i></span></a>
 
 
     <!-- ++++++++++ COMPANY NAME ++++++++++ -->
@@ -187,8 +182,11 @@ font-size: 10px;
 
         
 
-        
-        
+        <p ng-show="{{company.descriptionCSO}}" class="padding">{{company.descriptionCSO}}</p>
+
+
+        <a class="item item-divider item-icon-left item-icon-right " href="http://www.linkedin.com/company/{{company.linkedinID}}" target="_blank"><i class="icon linkedinblue ion-social-linkedin"></i>LinkedIn<span class="item-note"><i class="icon linkedinblue ion-share"></i></span></a>
+        <!-- ng-show="{{company.linkedinID}}" -->
 
 
 

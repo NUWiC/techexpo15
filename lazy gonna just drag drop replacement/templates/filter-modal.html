@@ -1,0 +1,56 @@
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45359239-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    <div class="modal">
+      <ion-header-bar>
+        <h1 class="title">Filter Company List</h1>
+        <div class="buttons">
+          <button class="button button-clear icon ion-close" ng-click="closeModal()"></button>
+        </div>
+      </ion-header-bar>
+      <ion-content>
+
+      Companies matching your filters: {{companies = (allCompanies | filter:userFilter).length}} (of {{allCompanies.length}} total).
+
+      
+      <div class="item item-divider"> Positions </div>
+        
+        <ion-checkbox ng-repeat="item in positions"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked"
+                      ng-change="includePosition(item.name)">
+          {{ item.friendlyName }}
+        </ion-checkbox>
+
+      
+
+<div class="item item-divider"> Majors </div>
+        
+        <ion-checkbox ng-repeat="item in majors"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked"
+                      ng-change="includeMajor(item.name)">
+          {{ item.friendlyName }}
+        </ion-checkbox>
+
+<!--
+        <div class="item item-divider"> Industries </div>
+        
+        <ion-checkbox ng-repeat="item in industries"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked"
+                      ng-change="includeIndustry(item.name)">
+          {{ item.friendlyName }}
+        </ion-checkbox>
+        -->
+
+      </ion-content>
+    </div>
